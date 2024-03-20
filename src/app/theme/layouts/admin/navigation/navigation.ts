@@ -43,26 +43,26 @@ export const NavigationItems: NavigationItem[] = [
     children: [
       {
         id: 'cadastro-militar',
-        title: 'Cadastro Militar',
+        title: 'Cadastrar Militar',
         type: 'item',
         classes: 'nav-item',
         url: '/cadastro-militar',
         icon: 'ti ti-typography'
       },
       {
-        id: 'card',
-        title: 'Card',
+        id: 'cadastro-material',
+        title: 'Cadastrar Material',
         type: 'item',
         classes: 'nav-item',
-        url: '/card',
+        url: '/cadastro-material',
         icon: 'ti ti-credit-card'
       },
       {
-        id: 'breadcrumb',
-        title: 'Breadcrumb',
+        id: 'cautelas',
+        title: 'Cautelar Material',
         type: 'item',
         classes: 'nav-item',
-        url: '/breadcrumb',
+        url: '/cautelar-material',
         icon: 'ti ti-hierarchy-2'
       },
       {

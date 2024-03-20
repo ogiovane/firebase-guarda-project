@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <form [formGroup]="cadastroForm" (ngSubmit)="salvarDados()" novalidate>
+  <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
 
     <!-- Posto/Graduação -->
     <div class="mb-3">
@@ -71,6 +71,9 @@
         <option *ngFor="let lotacao of lotacoes" [value]="lotacao">{{ lotacao }}</option>
       </select>
     </div>
+
+    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+
 
     <!-- Botões -->
     <div class="text-center">

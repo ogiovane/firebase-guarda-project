@@ -25,6 +25,14 @@ const routes: Routes = [
         loadComponent: () => import('./project/cadastro-militares/cadastro-militares.component').then(m => m.CadastroMilitaresComponent)
       },
       {
+        path: 'cadastro-material',
+        loadComponent: () => import('./project/cadastro-material/cadastro-material.component').then(m => m.CadastroMaterialComponent)
+      },
+      {
+        path: 'cautelar-material',
+        loadComponent: () => import('./project/emprestar-material/emprestar-material.component').then(m => m.EmprestarMaterialComponent)
+      },
+      {
         path: 'card',
         loadComponent: () => import('./demo/component/card/card.component')
       },
