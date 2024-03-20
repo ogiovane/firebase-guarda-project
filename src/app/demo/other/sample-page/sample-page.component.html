@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Cadastro de Militar</h1>
+  <form [formGroup]="cadastroForm">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="postoGraduacao">Posto/Graduação:</label>
+        <select id="postoGraduacao" formControlName="postoGraduacao" class="form-select">
+          <option value="">Selecione...</option>
+          <option value="AL SD">AL SD</option>
+          <option value="SD">SD</option>
+          <option value="CB">CB</option>
+          <option value="3º SGT">3º SGT</option>
+          <option value="2º SGT">2º SGT</option>
+          <option value="1º SGT">1º SGT</option>
+          <option value="SUBTEN">SUBTEN</option>
+          <option value="AL OF">AL OF</option>
+          <option value="ASP OF">ASP OF</option>
+          <option value="TEN">TEN</option>
+          <option value="CAP">CAP</option>
+          <option value="MAJ">MAJ</option>
+          <option value="TEN-CEL">TEN-CEL</option>
+          <option value="CEL">CEL</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="nomeCompleto">Nome Completo:</label>
+        <input type="text" id="nomeCompleto" formControlName="nomeCompleto" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" formControlName="rg" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label for="numeroFuncional">Número Funcional:</label>
+        <input type="text" id="numeroFuncional" formControlName="numeroFuncional" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label for="celular">Celular:</label>
+        <input type="text" id="celular" formControlName="celular" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="lotacao">Lotação:</label>
+        <select id="lotacao" formControlName="lotacao" class="form-select">
+          <option value="">Selecione...</option>
+          <option value="1ª Cia">1ª Cia</option>
+          <option value="2ª Cia">2ª Cia</option>
+          <option value="4ª Cia">4ª Cia</option>
+          <option value="5ª Cia">5ª Cia</option>
+          <option value="FT">FT</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-success me-3">Salvar</button>
+        <button type="button" class="btn btn-danger">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>
