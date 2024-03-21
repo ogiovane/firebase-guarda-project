@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <form [formGroup]="emprestimoForm" (ngSubmit)="salvarEmprestimo()">
+
+    <div class="mb-3">
+      <label for="nf" class="form-label">NF Militar</label>
+      <input type="text" class="form-control" id="nf" formControlName="nf">
+      <!-- Botão para validar o militar, chamando o método validarMilitar -->
+      <button class="btn btn-primary mt-2" type="button" (click)="validarMilitar()">Validar</button>
+    </div>
+
+    <!-- Campos preenchidos automaticamente após a validação do militar -->
+    <div class="mb-3">
+      <label for="rg" class="form-label">RG</label>
+      <input type="text" class="form-control" id="rg" formControlName="rg" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="nomeCompleto" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="nomeCompleto" formControlName="nomeCompleto" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="posto" class="form-label">Posto</label>
+      <input type="text" class="form-control" id="posto" formControlName="posto" readonly>
+    </div>
+
+    <!-- Seleção do tipo de material -->
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo de Material</label>
+      <select class="form-select" id="tipo" formControlName="tipo" (change)="carregarMateriaisPorTipo()">
+        <option value="">Selecione um tipo</option>
+        <option value="Chave">Chave</option>
+        <option value="Cartão">Cartão</option>
+        <option value="Documento">Documento</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
+
+    <!-- Seleção de material e status -->
+    <div class="mb-3">
+      <label for="material">Material</label>
+      <select class="form-select" id="material" formControlName="materialId" (change)="atualizarDescricaoMaterial($event)">
+        <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricao }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select class="form-select" id="status" formControlName="status">
+        <option value="Disponível">Disponível</option>
+        <option value="Cautelado">Cautelado</option>
+        <option value="Emprestado">Emprestado</option>
+        <option value="Com a Subseção de Transportes">Com a Subseção de Transportes</option>
+      </select>
+    </div>
+
+    <!-- Botões para salvar e cancelar -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-success me-2">Salvar</button>
+      <button type="button" class="btn btn-danger" (click)="cancelarEmprestimo()">Cancelar</button>
+    </div>
+  </form>
+</div>

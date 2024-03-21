@@ -33,6 +33,14 @@ const routes: Routes = [
         loadComponent: () => import('./project/emprestar-material/emprestar-material.component').then(m => m.EmprestarMaterialComponent)
       },
       {
+        path: 'cautelar-material',
+        loadComponent: () => import('./project/emprestar-material/emprestar-material.component').then(m => m.EmprestarMaterialComponent)
+      },
+      {
+        path: 'listar-materiais',
+        loadComponent: () => import('./project/lista-materiais/lista-materiais.component').then(m => m.ListaMateriaisComponent)
+      },
+      {
         path: 'card',
         loadComponent: () => import('./demo/component/card/card.component')
       },

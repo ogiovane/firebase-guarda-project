@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <form [formGroup]="cadastroForm" (ngSubmit)="salvarDados()">
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo</label>
+      <select class="form-select" id="tipo" formControlName="tipo">
+        <option value="Chave">Chave</option>
+        <option value="Cartão">Cartão</option>
+        <option value="Documento">Documento</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="descricao" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="descricao" formControlName="descricao">
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select class="form-select" id="status" formControlName="status">
+        <option value="Disponível">Disponível</option>
+        <option value="Cautelado">Cautelado</option>
+        <option value="Emprestado">Emprestado</option>
+        <option value="Com a Subseção de Transportes">Com a Subseção de Transportes</option>
+      </select>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-success me-2">Salvar</button>
+      <button type="button" class="btn btn-danger" (click)="cadastroForm.reset()">Cancelar</button>
+    </div>
+  </form>
+</div>

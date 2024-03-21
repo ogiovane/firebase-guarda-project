@@ -66,11 +66,11 @@ export const NavigationItems: NavigationItem[] = [
         icon: 'ti ti-hierarchy-2'
       },
       {
-        id: 'spinner',
-        title: 'spinner',
+        id: 'listar-materiais',
+        title: 'Listar Materiais',
         type: 'item',
         classes: 'nav-item',
-        url: '/spinner',
+        url: '/listar-materiais',
         icon: 'ti ti-loader'
       },
       {

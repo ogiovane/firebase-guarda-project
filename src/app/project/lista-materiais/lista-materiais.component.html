@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <!-- Botões alinhados à direita -->
+  <!--  <div class="d-flex justify-content-end mb-3">-->
+  <!--    <button class="btn btn-secondary me-2" (click)="cadastrarMilitar()">Cadastrar Militar</button>-->
+  <!--    <button class="btn btn-info" (click)="cadastrarMaterial()">Cadastrar Material</button>-->
+  <!--  </div>-->
+
+  <!-- Contadores alinhados lado a lado com estilização -->
+  <div class="d-flex align-items-center mb-3">
+    <p class="me-4"><strong>Cartões Disponíveis:</strong> {{ materiaisDisponiveis$ | async }}</p>
+    <p class="me-4"><strong>Cautelados:</strong> {{ materiaisCautelados$ | async }}</p>
+    <p><strong>Total:</strong> {{ (materiaisDisponiveis$ | async) + (materiaisCautelados$ | async) }}</p>
+  </div>
+
+  <!-- Filtro por Status -->
+  <div class="mb-3">
+    <label for="filtroStatus" class="form-label">Filtrar por Status:</label>
+    <select class="form-select" id="filtroStatus" [(ngModel)]="filtroStatus" (ngModelChange)="aplicarFiltro()">
+      <option value="todos">Todos</option>
+      <option value="Disponível">Disponível</option>
+      <option value="Cautelado">Cautelado</option>
+      <!-- Adicione mais opções de status conforme necessário -->
+    </select>
+  </div>
+
+  <!-- Tabela de Materiais -->
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Descrição</th>
+      <th>Status</th>
+      <th>Ação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let material of materiais$ | async">
+      <td>{{ material.tipo }}</td>
+      <td>{{ material.descricao  }}</td>
+      <td>{{ material.status }}</td>
+      <td>
+        <button class="btn btn-primary" *ngIf="material.status === 'Disponível'"
+                (click)="redirecionarParaCautelar(material.id)">Cautelar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
