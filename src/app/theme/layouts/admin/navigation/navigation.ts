@@ -37,7 +37,7 @@ export const NavigationItems: NavigationItem[] = [
   },
   {
     id: 'elements',
-    title: 'UI Components',
+    title: 'Cautelas',
     type: 'group',
     icon: 'icon-navigation',
     children: [
@@ -47,7 +47,7 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/cadastro-militar',
-        icon: 'ti ti-typography'
+        icon: 'ti ti-user-plus'
       },
       {
         id: 'cadastro-material',
@@ -55,7 +55,7 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/cadastro-material',
-        icon: 'ti ti-credit-card'
+        icon: 'ti ti-circle-plus'
       },
       {
         id: 'cautelas',
@@ -63,7 +63,7 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/cautelar-material',
-        icon: 'ti ti-hierarchy-2'
+        icon: 'ti ti-shopping-cart'
       },
       {
         id: 'listar-materiais',
@@ -71,26 +71,26 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/listar-materiais',
-        icon: 'ti ti-loader'
+        icon: 'ti ti-list'
       },
-      {
-        id: 'color',
-        title: 'Colors',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/color',
-        icon: 'ti ti-brush'
-      },
-      {
-        id: 'tabler',
-        title: 'Tabler',
-        type: 'item',
-        classes: 'nav-item',
-        url: 'https://tabler-icons.io/',
-        icon: 'ti ti-leaf',
-        target: true,
-        external: true
-      }
+      // {
+      //   id: 'color',
+      //   title: 'Colors',
+      //   type: 'item',
+      //   classes: 'nav-item',
+      //   url: '/color',
+      //   icon: 'ti ti-brush'
+      // },
+      // {
+      //   id: 'tabler',
+      //   title: 'Tabler',
+      //   type: 'item',
+      //   classes: 'nav-item',
+      //   url: 'https://tabler-icons.io/',
+      //   icon: 'ti ti-leaf',
+      //   target: true,
+      //   external: true
+      // }
     ]
   },
   {

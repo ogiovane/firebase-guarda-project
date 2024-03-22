@@ -17,13 +17,14 @@ import { NavContentComponent } from './theme/layouts/admin/navigation/nav-conten
 import { NavCollapseComponent } from './theme/layouts/admin/navigation/nav-content/nav-collapse/nav-collapse.component';
 import { NavGroupComponent } from './theme/layouts/admin/navigation/nav-content/nav-group/nav-group.component';
 import { NavItemComponent } from './theme/layouts/admin/navigation/nav-content/nav-item/nav-item.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     AdminComponent,
@@ -38,9 +39,9 @@ import { environment } from '../environments/environment';
     NavItemComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule],
-  bootstrap: [AppComponent]
+    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
+    AngularFireDatabaseModule, MatDialogModule,
+    BrowserAnimationsModule]
 })
 export class AppModule {
 }

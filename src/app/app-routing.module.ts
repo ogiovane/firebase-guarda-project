@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 // Project import
 import { AdminComponent } from './theme/layouts/admin/admin.component';
 import { GuestComponent } from './theme/layouts/guest/guest.component';
+import { LoginComponent} from './project/authentication/login/login.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboard/default',
+        redirectTo: 'authentication/login',
         pathMatch: 'full'
       },
       {
@@ -30,15 +31,19 @@ const routes: Routes = [
       },
       {
         path: 'cautelar-material',
-        loadComponent: () => import('./project/emprestar-material/emprestar-material.component').then(m => m.EmprestarMaterialComponent)
+        loadComponent: () => import('./project/cautelar-material/cautelar-material.component').then(m => m.CautelarMaterialComponent)
       },
       {
-        path: 'cautelar-material',
-        loadComponent: () => import('./project/emprestar-material/emprestar-material.component').then(m => m.EmprestarMaterialComponent)
+        path: 'cautelar-material/:tipo/:descricao',
+        loadComponent: () => import('./project/cautelar-material/cautelar-material.component').then(m => m.CautelarMaterialComponent)
       },
       {
         path: 'listar-materiais',
         loadComponent: () => import('./project/lista-materiais/lista-materiais.component').then(m => m.ListaMateriaisComponent)
+      },
+      {
+        path: 'devolver-material',
+        loadComponent: () => import('./project/devolucao-material/devolucao-material.component').then(m => m.DevolucaoMaterialComponent)
       },
       {
         path: 'card',
@@ -64,11 +69,12 @@ const routes: Routes = [
   },
   {
     path: '',
+    // redirectTo: 'authentication/login',
     component: GuestComponent,
     children: [
       {
         path: 'login',
-        loadComponent: () => import('./demo/authentication/login/login.component')
+        loadComponent: () => import('./project/authentication/login/login.component').then(m => m.LoginComponent)
       },
       {
         path: 'register',

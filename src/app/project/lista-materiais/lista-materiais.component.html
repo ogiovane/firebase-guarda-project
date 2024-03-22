@@ -36,12 +36,11 @@
     <tbody>
     <tr *ngFor="let material of materiais$ | async">
       <td>{{ material.tipo }}</td>
-      <td>{{ material.descricao  }}</td>
+      <td>{{ material.descricao }}</td>
       <td>{{ material.status }}</td>
       <td>
-        <button class="btn btn-primary" *ngIf="material.status === 'Disponível'"
-                (click)="redirecionarParaCautelar(material.id)">Cautelar
-        </button>
+        <button class="btn btn-success me-2" *ngIf="material.status === 'Disponível'" (click)="redirecionarParaCautelar()">Cautelar</button>
+        <button class="btn btn-danger" *ngIf="material.status !== 'Disponível'" class="btn btn-danger" (click)="devolverMaterial(material)">Devolver</button>
       </td>
     </tr>
     </tbody>

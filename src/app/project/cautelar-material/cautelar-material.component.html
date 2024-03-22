@@ -38,6 +38,7 @@
     <div class="mb-3">
       <label for="material">Material</label>
       <select class="form-select" id="material" formControlName="materialId" (change)="atualizarDescricaoMaterial($event)">
+        <option value="">Selecione...</option>
         <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricao }}</option>
       </select>
     </div>
@@ -53,7 +54,7 @@
 
     <!-- Botões para salvar e cancelar -->
     <div class="text-center">
-      <button type="submit" class="btn btn-success me-2">Salvar</button>
+      <button type="submit" class="btn btn-success me-2" [disabled]="emprestimoForm.invalid">Salvar</button>
       <button type="button" class="btn btn-danger" (click)="cancelarEmprestimo()">Cancelar</button>
     </div>
   </form>

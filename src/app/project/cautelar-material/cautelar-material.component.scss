@@ -1,0 +1,10 @@
+.custom-dialog-container {
+  z-index: 1500; /* Ajuste conforme necessário para sobrepor outros elementos */
+}
+
+/* Exemplo de ajuste adicional se necessário */
+.mat-dialog-container {
+  /* Ajuste o posicionamento se outros métodos não estiverem funcionando */
+  transform: translateX(0) !important; /* Centraliza horizontalmente */
+  transform: translateY(0) !important; /* Centraliza verticalmente */
+}

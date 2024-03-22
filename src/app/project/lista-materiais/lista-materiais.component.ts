@@ -5,12 +5,17 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Material {
   id: string;
   tipo: string;
   status: string;
   descricao: string;
+  rg: string;
+  nf: string;
+  posto: string;
+  nomeCompleto: string;
 }
 
 @Component({
@@ -27,7 +32,7 @@ export class ListaMateriaisComponent implements OnInit {
   filtroStatus: string = 'todos';
   materiaisFiltrados: Material[] = [];
 
-  constructor(private firestore: AngularFirestore, private router: Router) {}
+  constructor(private firestore: AngularFirestore, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.materiais$ = this.firestore.collection<Material>('materiais').valueChanges({ idField: 'id' });
@@ -64,8 +69,42 @@ export class ListaMateriaisComponent implements OnInit {
     // Implemente ou redirecione para a lógica de cadastro de material
   }
 
-  redirecionarParaCautelar(id: string): void {
-    // Aqui você pode passar o ID como um estado ou parâmetro de rota, se necessário
+  redirecionarParaCautelar(): void {
     this.router.navigate(['/cautelar-material']);
   }
+
+  devolverMaterial(material: Material): void {
+    this.router.navigate(['/devolver-material'], { state: { material } });
+  }
+
+/*  devolverMaterial(material: Material): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Lógica para salvar a devolução na base de dados historico
+        const devolucaoData = {
+          dataHoraDevolucao: new Date().toISOString(),
+          tipo: material.tipo,
+          descricao: material.descricao,
+          rg: material.rg, // Suponha que esses dados sejam acessíveis no objeto material
+          nf: material.nf,
+          posto: material.posto,
+          nomeCompleto: material.nomeCompleto,
+          usuario: 'UsuárioFuturo' // Será substituído pela implementação de login
+        };
+
+        this.firestore.collection('historico').add(devolucaoData).then(() => {
+          console.log('Devolução registrada com sucesso.');
+        }).catch(error => {
+          console.error('Erro ao registrar devolução:', error);
+        });
+
+        // Atualize o status do material para 'Disponível'
+        this.firestore.collection('materiais').doc(material.id).update({ status: 'Disponível' });
+      }
+    });
+  }*/
 }

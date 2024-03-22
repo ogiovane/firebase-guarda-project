@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, of, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface Material {
   id: string;
+  tipo: string;
   descricao: string;
   status: string;
 }
@@ -20,18 +22,19 @@ interface Militar {
 }
 
 @Component({
-  selector: 'app-emprestar-material',
-  templateUrl: './emprestar-material.component.html',
-  styleUrls: ['./emprestar-material.component.scss'],
+  selector: 'app-cautelar-material',
+  templateUrl: './cautelar-material.component.html',
+  styleUrls: ['./cautelar-material.component.scss'],
   standalone: true,
   imports: [ReactiveFormsModule, AsyncPipe, CommonModule]
 })
-export class EmprestarMaterialComponent implements OnInit {
+export class CautelarMaterialComponent implements OnInit {
   emprestimoForm: FormGroup;
   materiaisDisponiveis$: Observable<Material[]>;
   materiaisDisponiveis: Material[] = [];
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, private fb: FormBuilder, private route: ActivatedRoute,
+              private router: Router) {
     this.emprestimoForm = new FormGroup({
       nf: new FormControl('', Validators.required),
       rg: new FormControl({ value: '', disabled: true }, Validators.required),
@@ -40,8 +43,20 @@ export class EmprestarMaterialComponent implements OnInit {
       tipo: new FormControl('', Validators.required),
       materialId: new FormControl('', Validators.required),
       descricaoMaterial: new FormControl('', Validators.required), // Campo adicionado para descrição
-      status: new FormControl('', Validators.required),
+      status: new FormControl('', Validators.required)
     });
+
+    // Se os dados do material forem passados, preencha o formulário com esses dados
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      const material: Material = navigation.extras.state['material'];
+      this.emprestimoForm.patchValue({
+        tipo: material.tipo, // Ajuste conforme o nome do campo no seu formulário
+        descricaoMaterial: material.descricao, // Ajuste conforme o nome do campo no seu formulário
+        materialId: material.id,
+        status: 'Disponível' // Isso é apenas um exemplo, ajuste conforme necessário
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -72,6 +87,7 @@ export class EmprestarMaterialComponent implements OnInit {
       this.materiaisDisponiveis$ = new Observable<Material[]>(); // Reset quando nenhum tipo é selecionado
     }
   }
+
   validarMilitar(): void {
     const nf = this.emprestimoForm.get('nf')?.value;
     this.firestore.collection<Militar>('cadastros', ref => ref.where('nf', '==', nf)).valueChanges({ idField: 'id' }).pipe(
@@ -81,7 +97,7 @@ export class EmprestarMaterialComponent implements OnInit {
         this.emprestimoForm.patchValue({
           rg: militar.rg,
           nomeCompleto: militar.nomeCompleto,
-          posto: militar.posto,
+          posto: militar.posto
         });
       } else {
         alert('Militar não encontrado.');
@@ -92,7 +108,7 @@ export class EmprestarMaterialComponent implements OnInit {
   adicionarAoHistorico(dadosEmprestimo): void {
     const registroHistorico = {
       ...dadosEmprestimo,
-      dataHora: dadosEmprestimo.dataHora.toISOString(), // Converte a data/hora para string ISO
+      dataHora: dadosEmprestimo.dataHora.toISOString() // Converte a data/hora para string ISO
       // Certifique-se de que os campos necessários estão incluídos, você pode omitir campos não desejados aqui
     };
 
@@ -109,25 +125,48 @@ export class EmprestarMaterialComponent implements OnInit {
 
   salvarEmprestimo(): void {
     if (this.emprestimoForm.valid) {
-      const emprestimoData = this.emprestimoForm.getRawValue(); // getRawValue para incluir campos desabilitados
-      const agora = new Date();
-      emprestimoData.dataHora = agora;
+      const emprestimoData = this.emprestimoForm.value;
+      // Ajuste a linha abaixo para incluir a data/hora atual antes de salvar
+      emprestimoData.dataHora = new Date();
 
-      this.firestore.collection('cautelas').add(emprestimoData).then(docRef => {
-        this.atualizarStatusMaterial(emprestimoData.materialId, 'Emprestado');
-        this.adicionarAoHistorico(emprestimoData); // Agora inclui descrição do material
+      this.firestore.collection('historico').add(emprestimoData).then(docRef => {
         console.log('Emprestimo registrado com sucesso:', docRef.id);
+
+        // Atualizar status do material para 'Emprestado'
+        this.atualizarStatusMaterial(emprestimoData.materialId, 'Emprestado').then(() => {
+          // Somente após a atualização do status, perguntar se deseja continuar
+          const desejaContinuar = confirm('Deseja continuar realizando cautelas?');
+          if (desejaContinuar) {
+            // Se deseja continuar, resetar apenas os campos necessários e recarregar materiais disponíveis
+            this.emprestimoForm.controls['tipo'].updateValueAndValidity();
+            this.emprestimoForm.controls['materialId'].reset();
+            this.emprestimoForm.controls['descricaoMaterial'].reset();
+            this.emprestimoForm.controls['status'].setValue('Disponível');
+            // É importante chamar o método para recarregar materiais disponíveis
+            this.carregarMateriaisPorTipo();
+          } else {
+            // Se não deseja continuar, redirecionar para a lista de materiais
+            this.router.navigate(['/listar-materiais']);
+          }
+        });
       }).catch(error => {
         console.error('Erro ao salvar empréstimo:', error);
       });
+    } else {
+      alert('Por favor, preencha todos os campos obrigatórios.');
     }
   }
 
-  atualizarStatusMaterial(materialId: string, novoStatus: string): void {
-    this.firestore.collection('materiais').doc(materialId).update({ status: novoStatus })
-      .then(() => console.log('Status do material atualizado com sucesso.'))
-      .catch(error => console.error('Erro ao atualizar status do material:', error));
+  async atualizarStatusMaterial(materialId: string, novoStatus: string): Promise<void> {
+    return this.firestore.collection('materiais').doc(materialId).update({ status: novoStatus });
   }
+
+
+  // atualizarStatusMaterial(materialId: string, novoStatus: string): void {
+  //   this.firestore.collection('materiais').doc(materialId).update({ status: novoStatus })
+  //     .then(() => console.log('Status do material atualizado com sucesso.'))
+  //     .catch(error => console.error('Erro ao atualizar status do material:', error));
+  // }
 
   cancelarEmprestimo(): void {
     this.emprestimoForm.reset();
