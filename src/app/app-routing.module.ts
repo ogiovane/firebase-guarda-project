@@ -6,11 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './theme/layouts/admin/admin.component';
 import { GuestComponent } from './theme/layouts/guest/guest.component';
 import { LoginComponent} from './project/authentication/login/login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

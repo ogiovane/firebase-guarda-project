@@ -1,12 +1,20 @@
 // angular import
 import { Component } from '@angular/core';
+import { AuthService } from '../../../../../project/services/authentication/auth-service.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-nav-right',
   templateUrl: './nav-right.component.html',
-  styleUrls: ['./nav-right.component.scss']
+  styleUrls: ['./nav-right.component.scss'],
+  // imports: [CommonModule],
 })
+
+
+
 export class NavRightComponent {
+  constructor(protected authService: AuthService, private router: Router) {}
   // public method
   profile = [
     {
@@ -27,7 +35,8 @@ export class NavRightComponent {
     },
     {
       icon: 'ti ti-power',
-      title: 'Logout'
+      title: 'Logout',
+      click: this.authService.logout()
     }
   ];
 

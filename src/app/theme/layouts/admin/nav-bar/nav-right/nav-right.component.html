@@ -106,14 +106,20 @@
         <li ngbNavItem="1">
           <a ngbNavLink><i class="ti ti-user"></i> Profile</a>
           <ng-template ngbNavContent>
-            @for (task of profile; track task) {
-              <div>
-                <a href="javascript:" class="dropdown-item">
-                  <i class="{{ task.icon }}"></i>
-                  <span>{{ task.title }}</span>
-                </a>
-              </div>
-            }
+            <div>
+              <a href="javascript:" class="dropdown-item">
+                <i class="ti ti-power"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+<!--            @for (task of profile; track task) {-->
+<!--              <div>-->
+<!--                <a href="javascript:" class="dropdown-item">-->
+<!--                  <i class="{{ task.icon }}"></i>-->
+<!--                  <span>{{ task.title }}</span>-->
+<!--                </a>-->
+<!--              </div>-->
+<!--            }-->
           </ng-template>
         </li>
         <li ngbNavItem="2">
