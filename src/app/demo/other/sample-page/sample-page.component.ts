@@ -19,7 +19,7 @@ export class SamplePageComponent {
   constructor() {
     this.cadastroForm = new FormGroup({
       postoGraduacao: new FormControl(''),
-      nomeCompleto: new FormControl(''),
+      nome: new FormControl(''),
       rg: new FormControl(''),
       numeroFuncional: new FormControl(''),
       celular: new FormControl(''),

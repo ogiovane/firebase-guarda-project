@@ -6,10 +6,21 @@
   <!--  </div>-->
 
   <!-- Contadores alinhados lado a lado com estilização -->
-  <div class="d-flex align-items-center mb-3">
-    <p class="me-4"><strong>Cartões Disponíveis:</strong> {{ materiaisDisponiveis$ | async }}</p>
-    <p class="me-4"><strong>Cautelados:</strong> {{ materiaisCautelados$ | async }}</p>
-    <p><strong>Total:</strong> {{ (materiaisDisponiveis$ | async) + (materiaisCautelados$ | async) }}</p>
+  <div class="col">
+    <div class="col-md-6">
+      <div class="d-flex align-items-center mb-0">
+        <p class="me-4"><strong>Cartões Disponíveis:</strong> {{ cartoesDisponiveis | async }}</p>
+        <p class="me-4"><strong>Cautelados:</strong> {{ cartoesCautelados | async }}</p>
+        <p><strong>Total:</strong> {{ (cartoesDisponiveis | async) + (cartoesCautelados | async) }}</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex align-items-center mb-3">
+        <p class="me-4"><strong>Chaves Disponíveis:</strong> {{ chavesDisponiveis| async }}</p>
+        <p class="me-4"><strong>Cauteladas:</strong> {{ chavesCauteladas | async }}</p>
+        <p><strong>Total:</strong> {{ (chavesDisponiveis | async) + (chavesCauteladas | async) }}</p>
+      </div>
+    </div>
   </div>
 
   <!-- Filtro por Status -->
@@ -36,7 +47,7 @@
     <tbody>
     <tr *ngFor="let material of materiais$ | async">
       <td>{{ material.tipo }}</td>
-      <td>{{ material.descricao }}</td>
+      <td>{{ material.descricaoMaterial }}</td>
       <td>{{ material.status }}</td>
       <td>
         <button class="btn btn-success me-2" *ngIf="material.status === 'Disponível'" (click)="redirecionarParaCautelar()">Cautelar</button>

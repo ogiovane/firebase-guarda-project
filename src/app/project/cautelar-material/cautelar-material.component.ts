@@ -9,14 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 interface Material {
   id: string;
   tipo: string;
-  descricao: string;
+  descricaoMaterial: string;
   status: string;
 }
 
 interface Militar {
   id: string;
   rg: string;
-  nomeCompleto: string;
+  nome: string;
   posto: string;
   // Adicione outras propriedades conforme necessário
 }
@@ -38,7 +38,7 @@ export class CautelarMaterialComponent implements OnInit {
     this.emprestimoForm = new FormGroup({
       nf: new FormControl('', Validators.required),
       rg: new FormControl({ value: '', disabled: true }, Validators.required),
-      nomeCompleto: new FormControl({ value: '', disabled: true }, Validators.required),
+      nome: new FormControl({ value: '', disabled: true }, Validators.required),
       posto: new FormControl({ value: '', disabled: true }, Validators.required),
       tipo: new FormControl('', Validators.required),
       materialId: new FormControl('', Validators.required),
@@ -52,7 +52,7 @@ export class CautelarMaterialComponent implements OnInit {
       const material: Material = navigation.extras.state['material'];
       this.emprestimoForm.patchValue({
         tipo: material.tipo, // Ajuste conforme o nome do campo no seu formulário
-        descricaoMaterial: material.descricao, // Ajuste conforme o nome do campo no seu formulário
+        descricaoMaterial: material.descricaoMaterial, // Ajuste conforme o nome do campo no seu formulário
         materialId: material.id,
         status: 'Disponível' // Isso é apenas um exemplo, ajuste conforme necessário
       });
@@ -96,7 +96,7 @@ export class CautelarMaterialComponent implements OnInit {
       if (militar) {
         this.emprestimoForm.patchValue({
           rg: militar.rg,
-          nomeCompleto: militar.nomeCompleto,
+          nome: militar.nome,
           posto: militar.posto
         });
       } else {
@@ -109,6 +109,7 @@ export class CautelarMaterialComponent implements OnInit {
     const registroHistorico = {
       ...dadosEmprestimo,
       dataHora: dadosEmprestimo.dataHora.toISOString() // Converte a data/hora para string ISO
+
       // Certifique-se de que os campos necessários estão incluídos, você pode omitir campos não desejados aqui
     };
 
@@ -120,20 +121,23 @@ export class CautelarMaterialComponent implements OnInit {
   atualizarDescricaoMaterial(event: any): void {
     const selectedId = event.target.value;
     const selectedMaterial = this.materiaisDisponiveis.find(material => material.id === selectedId);
-    this.emprestimoForm.patchValue({ descricaoMaterial: selectedMaterial?.descricao || '' });
+    this.emprestimoForm.patchValue({ descricaoMaterial: selectedMaterial?.descricaoMaterial || '' });
   }
 
   salvarEmprestimo(): void {
     if (this.emprestimoForm.valid) {
-      const emprestimoData = this.emprestimoForm.value;
+      const emprestimoData = this.emprestimoForm.getRawValue();
       // Ajuste a linha abaixo para incluir a data/hora atual antes de salvar
-      emprestimoData.dataHora = new Date();
+      emprestimoData.dataHoraCautela = new Date();
+      emprestimoData.responsavelCautela = '';
+      emprestimoData.dataHoraDevolucao = '';
+      emprestimoData.responsavelDevolucao = '';
 
       this.firestore.collection('historico').add(emprestimoData).then(docRef => {
         console.log('Emprestimo registrado com sucesso:', docRef.id);
 
-        // Atualizar status do material para 'Emprestado'
-        this.atualizarStatusMaterial(emprestimoData.materialId, 'Emprestado').then(() => {
+        // Atualizar status do material para 'Cautelado'
+        this.atualizarStatusMaterial(emprestimoData.materialId, 'Cautelado').then(() => {
           // Somente após a atualização do status, perguntar se deseja continuar
           const desejaContinuar = confirm('Deseja continuar realizando cautelas?');
           if (desejaContinuar) {
@@ -141,7 +145,7 @@ export class CautelarMaterialComponent implements OnInit {
             this.emprestimoForm.controls['tipo'].updateValueAndValidity();
             this.emprestimoForm.controls['materialId'].reset();
             this.emprestimoForm.controls['descricaoMaterial'].reset();
-            this.emprestimoForm.controls['status'].setValue('Disponível');
+            this.emprestimoForm.controls['status'].reset();
             // É importante chamar o método para recarregar materiais disponíveis
             this.carregarMateriaisPorTipo();
           } else {
@@ -170,5 +174,9 @@ export class CautelarMaterialComponent implements OnInit {
 
   cancelarEmprestimo(): void {
     this.emprestimoForm.reset();
+  }
+
+  voltar(): void {
+    this.router.navigate(['/listar-materiais']);
   }
 }

@@ -12,12 +12,12 @@
 
     <!-- Nome Completo -->
     <div class="mb-3">
-      <label for="nomeCompleto" class="form-label">Nome Completo</label>
-      <input type="text" class="form-control" id="nomeCompleto" formControlName="nomeCompleto">
-      <div *ngIf="cadastroForm.get('nomeCompleto').errors && cadastroForm.get('nomeCompleto').touched"
+      <label for="nome" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="nome" formControlName="nome">
+      <div *ngIf="cadastroForm.get('nome').errors && cadastroForm.get('nome').touched"
            class="text-danger">
-        <div *ngIf="cadastroForm.get('nomeCompleto').errors['required']">Nome completo é obrigatório.</div>
-        <div *ngIf="cadastroForm.get('nomeCompleto').errors['pattern']">Apenas letras são permitidas.</div>
+        <div *ngIf="cadastroForm.get('nome').errors['required']">Nome completo é obrigatório.</div>
+        <div *ngIf="cadastroForm.get('nome').errors['pattern']">Apenas letras são permitidas.</div>
       </div>
     </div>
 

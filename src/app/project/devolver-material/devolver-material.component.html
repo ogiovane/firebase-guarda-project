@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Devolver Material</h2>
+  <p><strong>Tipo:</strong> {{ material.tipo }}</p>
+  <p><strong>Descrição:</strong> {{ material?.descricaoMaterial }}</p>
+
+  <form [formGroup]="devolucaoForm">
+    <!-- Exibir somente se o tipo for 'Cartão' -->
+    <div *ngIf="material.tipo === 'Cartão'">
+      <div class="mb-3">
+        <label for="necessitaAbastecimento" class="form-label">Necessita Abastecimento?</label>
+        <select class="form-select" id="necessitaAbastecimento" formControlName="necessitaAbastecimento">
+          <option value="" disabled>Selecione</option>
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+        </select>
+      </div>
+
+      <div class="mb-3" *ngIf="devolucaoForm.get('necessitaAbastecimento').value === 'sim'">
+        <label for="cupomAbastecimento" class="form-label">Número do Cupom de Abastecimento:</label>
+        <input type="text" id="cupomAbastecimento" formControlName="cupomAbastecimento" class="form-control">
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-success" (click)="confirmarDevolucao()">Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+  </form>
+</div>

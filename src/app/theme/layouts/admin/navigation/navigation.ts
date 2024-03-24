@@ -73,14 +73,14 @@ export const NavigationItems: NavigationItem[] = [
         url: '/listar-materiais',
         icon: 'ti ti-list'
       },
-      // {
-      //   id: 'color',
-      //   title: 'Colors',
-      //   type: 'item',
-      //   classes: 'nav-item',
-      //   url: '/color',
-      //   icon: 'ti ti-brush'
-      // },
+      {
+        id: 'color',
+        title: 'Materiais Cautelados',
+        type: 'item',
+        classes: 'nav-item',
+        url: 'materiais-cautelados',
+        icon: 'ti ti-brush'
+      },
       // {
       //   id: 'tabler',
       //   title: 'Tabler',
@@ -123,17 +123,17 @@ export const NavigationItems: NavigationItem[] = [
   },
   {
     id: 'other',
-    title: 'Other',
+    title: 'Relatório',
     type: 'group',
     icon: 'icon-navigation',
     children: [
       {
         id: 'sample-page',
-        title: 'Sample Page',
+        title: 'Emitir relatório',
         type: 'item',
-        url: '/sample-page',
+        url: '/relatorio',
         classes: 'nav-item',
-        icon: 'ti ti-brand-chrome'
+        icon: 'ti ti-report'
       }
     ]
   }

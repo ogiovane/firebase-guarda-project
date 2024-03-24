@@ -11,11 +11,11 @@ interface Material {
   id: string;
   tipo: string;
   status: string;
-  descricao: string;
+  descricaoMaterial: string;
   rg: string;
   nf: string;
   posto: string;
-  nomeCompleto: string;
+  nome: string;
 }
 
 @Component({
@@ -26,8 +26,10 @@ interface Material {
   imports: [CommonModule, FormsModule]
 })
 export class ListaMateriaisComponent implements OnInit {
-  materiaisDisponiveis$: Observable<number>;
-  materiaisCautelados$: Observable<number>;
+  cartoesDisponiveis: Observable<number>;
+  cartoesCautelados: Observable<number>;
+  chavesDisponiveis: Observable<number>;
+  chavesCauteladas: Observable<number>;
   materiais$: Observable<Material[]>;
   filtroStatus: string = 'todos';
   materiaisFiltrados: Material[] = [];
@@ -37,10 +39,16 @@ export class ListaMateriaisComponent implements OnInit {
   ngOnInit(): void {
     this.materiais$ = this.firestore.collection<Material>('materiais').valueChanges({ idField: 'id' });
 
-    this.materiaisDisponiveis$ = this.firestore.collection<Material>('materiais', ref => ref.where('status', '==', 'Disponível').where('tipo', '==', 'Cartão'))
+    this.cartoesDisponiveis = this.firestore.collection<Material>('materiais', ref => ref.where('status', '==', 'Disponível').where('tipo', '==', 'Cartão'))
       .valueChanges().pipe(map(materiais => materiais.length));
 
-    this.materiaisCautelados$ = this.firestore.collection<Material>('materiais', ref => ref.where('status', '==', 'Cautelado').where('tipo', '==', 'Cartão'))
+    this.cartoesCautelados = this.firestore.collection<Material>('materiais', ref => ref.where('status', '==', 'Cautelado').where('tipo', '==', 'Cartão'))
+      .valueChanges().pipe(map(materiais => materiais.length));
+
+    this.chavesDisponiveis = this.firestore.collection<Material>('materiais', ref => ref.where('status', '==', 'Disponível').where('tipo', '==', 'Chave'))
+      .valueChanges().pipe(map(materiais => materiais.length));
+
+    this.chavesCauteladas = this.firestore.collection<Material>('materiais', ref => ref.where('status', '==', 'Cautelado').where('tipo', '==', 'Chave'))
       .valueChanges().pipe(map(materiais => materiais.length));
 
     this.firestore.collection<Material>('materiais').valueChanges({ idField: 'id' })
@@ -77,34 +85,34 @@ export class ListaMateriaisComponent implements OnInit {
     this.router.navigate(['/devolver-material'], { state: { material } });
   }
 
-/*  devolverMaterial(material: Material): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '250px'
-    });
+  /*  devolverMaterial(material: Material): void {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '250px'
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Lógica para salvar a devolução na base de dados historico
-        const devolucaoData = {
-          dataHoraDevolucao: new Date().toISOString(),
-          tipo: material.tipo,
-          descricao: material.descricao,
-          rg: material.rg, // Suponha que esses dados sejam acessíveis no objeto material
-          nf: material.nf,
-          posto: material.posto,
-          nomeCompleto: material.nomeCompleto,
-          usuario: 'UsuárioFuturo' // Será substituído pela implementação de login
-        };
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // Lógica para salvar a devolução na base de dados historico
+          const devolucaoData = {
+            dataHoraDevolucao: new Date().toISOString(),
+            tipo: material.tipo,
+            descricao: material.descricao,
+            rg: material.rg, // Suponha que esses dados sejam acessíveis no objeto material
+            nf: material.nf,
+            posto: material.posto,
+            nome: material.nome,
+            usuario: 'UsuárioFuturo' // Será substituído pela implementação de login
+          };
 
-        this.firestore.collection('historico').add(devolucaoData).then(() => {
-          console.log('Devolução registrada com sucesso.');
-        }).catch(error => {
-          console.error('Erro ao registrar devolução:', error);
-        });
+          this.firestore.collection('historico').add(devolucaoData).then(() => {
+            console.log('Devolução registrada com sucesso.');
+          }).catch(error => {
+            console.error('Erro ao registrar devolução:', error);
+          });
 
-        // Atualize o status do material para 'Disponível'
-        this.firestore.collection('materiais').doc(material.id).update({ status: 'Disponível' });
-      }
-    });
-  }*/
+          // Atualize o status do material para 'Disponível'
+          this.firestore.collection('materiais').doc(material.id).update({ status: 'Disponível' });
+        }
+      });
+    }*/
 }

@@ -26,7 +26,7 @@ export class CadastroMilitaresComponent {
 
   cadastroForm = new FormGroup({
     posto: new FormControl('', Validators.required),
-    nomeCompleto: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]),
+    nome: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]),
     rg: new FormControl('', [Validators.required, Validators.maxLength(6), Validators.pattern(/^\d+$/)]),
     nf: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern(/^\d+$/)]),
     celular: new FormControl('', [Validators.required, Validators.maxLength(11), Validators.pattern(/^\d+$/)]),

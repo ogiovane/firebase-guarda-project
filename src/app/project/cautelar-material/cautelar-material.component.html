@@ -1,9 +1,8 @@
 <div class="container mt-4">
   <form [formGroup]="emprestimoForm" (ngSubmit)="salvarEmprestimo()">
-
     <div class="mb-3">
       <label for="nf" class="form-label">NF Militar</label>
-      <input type="text" class="form-control" id="nf" formControlName="nf">
+      <input type="text" id="nf" formControlName="nf" class="form-control" (keyup.enter)="validarMilitar()">
       <!-- Botão para validar o militar, chamando o método validarMilitar -->
       <button class="btn btn-primary mt-2" type="button" (click)="validarMilitar()">Validar</button>
     </div>
@@ -14,8 +13,8 @@
       <input type="text" class="form-control" id="rg" formControlName="rg" readonly>
     </div>
     <div class="mb-3">
-      <label for="nomeCompleto" class="form-label">Nome Completo</label>
-      <input type="text" class="form-control" id="nomeCompleto" formControlName="nomeCompleto" readonly>
+      <label for="nome" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="nome" formControlName="nome" readonly>
     </div>
     <div class="mb-3">
       <label for="posto" class="form-label">Posto</label>
@@ -36,10 +35,10 @@
 
     <!-- Seleção de material e status -->
     <div class="mb-3">
-      <label for="material">Material</label>
-      <select class="form-select" id="material" formControlName="materialId" (change)="atualizarDescricaoMaterial($event)">
+      <label for="descricaoMaterial">Material</label>
+      <select class="form-select" id="descricaoMaterial" formControlName="materialId" (change)="atualizarDescricaoMaterial($event)">
         <option value="">Selecione...</option>
-        <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricao }}</option>
+        <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricaoMaterial }}</option>
       </select>
     </div>
     <div class="mb-3">
