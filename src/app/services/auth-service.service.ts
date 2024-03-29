@@ -94,13 +94,30 @@ export class AuthService {
     return this.afAuth.authState; // afAuth é uma referência para AngularFireAuth
   }
 
-  async getUserName(): Promise<string | null> {
-    const user = await this.afAuth.currentUser;
-    if (!user) {
-      return null;
+  async getUserData(): Promise<any> {
+    // Verifica se o usuário está autenticado via OAuth2
+    if (this.oAuthService.hasValidAccessToken()) {
+      const claims: any = this.oAuthService.getIdentityClaims();
+      return {
+        name: claims?.name,
+        email: claims?.email,
+        picture: claims?.picture
+        // Outros campos conforme necessário...
+      };
     }
-    // displayName é o campo padrão do Firebase para o nome do usuário
-    return user.displayName;
+
+    // Verifica se o usuário está autenticado via Firebase
+    const firebaseUser = await this.afAuth.currentUser;
+    if (firebaseUser) {
+      return {
+        name: firebaseUser.displayName,
+        email: firebaseUser.email,
+        picture: firebaseUser.photoURL
+        // Outros campos conforme necessário...
+      };
+    }
+
+    return null; // Retornar nulo ou algum valor padrão se nenhum usuário estiver logado
   }
 }
 

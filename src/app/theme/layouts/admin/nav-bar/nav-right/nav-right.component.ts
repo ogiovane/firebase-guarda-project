@@ -1,5 +1,5 @@
 // angular import
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../services/auth-service.service';
 import { Router } from '@angular/router';
 
@@ -13,8 +13,15 @@ import { Router } from '@angular/router';
 
 
 
-export class NavRightComponent {
+export class NavRightComponent implements OnInit{
+  userData: any;
   constructor(protected authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.authService.getUserData().then(data => {
+      this.userData = data;
+    });
+    }
   // public method
   profile = [
     {

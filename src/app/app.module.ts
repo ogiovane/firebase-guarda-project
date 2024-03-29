@@ -1,5 +1,4 @@
 // angular import
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -22,8 +21,9 @@ import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule, provideOAuthClient } from 'angular-oauth2-oidc';
+import { NgModule } from '@angular/core';
 
 
 @NgModule({
@@ -50,8 +50,7 @@ import { OAuthModule, provideOAuthClient } from 'angular-oauth2-oidc';
         }
       }
     ),
-    AngularFireDatabaseModule, MatDialogModule,
-    BrowserAnimationsModule],
+    AngularFireDatabaseModule, MatDialogModule],
   providers: [provideOAuthClient()],
 })
 export class AppModule {

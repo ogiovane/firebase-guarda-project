@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RelatorioService } from '../../services/relatorio.service';
 import { CommonModule, DatePipe } from '@angular/common';
+import { AuthService } from '../../services/auth-service.service';
 
 
 @Component({
@@ -19,15 +20,20 @@ import { CommonModule, DatePipe } from '@angular/common';
 export class RelatorioComponent implements OnInit {
   form: FormGroup;
   historicos: any[] = [];
+  userData: any;
 
-  constructor(private fb: FormBuilder, private relatorioService: RelatorioService) {
+  constructor(private fb: FormBuilder, private relatorioService: RelatorioService, private authService: AuthService) {
     this.form = this.fb.group({
       dataInicio: ['', Validators.required],
       dataFim: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.getUserData().then(data => {
+      this.userData = data;
+    });
+  }
 
   buscarHistorico(): void {
     if (this.form.valid) {
