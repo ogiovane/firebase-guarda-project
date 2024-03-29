@@ -29,18 +29,19 @@
           </div>
           <!-- Botão de entrar ajustado para chamar login() -->
           <div class="d-grid mt-4">
-            <button type="button" class="btn btn-primary" (click)="login()">Entrar</button>
+            <button type="button" class="btn btn-primary" (click)="loginWithEmailPassword()">Entrar</button>
           </div>
           <div class="saprator mt-3">
             <span>Entrar com</span>
           </div>
           <div class="row d-flex justify-content-center">
-            <button *ngIf="!isLoggedIn" (click)="loginWithGoogle()">Login com Google</button>
+<!--            <button *ngIf="!isLoggedIn" (click)="loginWithGoogle()">Login com Google</button>-->
 
-            <div class="row d-flex justify-content-center" *ngIf="isLoggedIn">
-              Bem vindo, {{ user.displayName }}!
-              <button (click)="authService.logout()">Logout</button>
-            </div>
+<!--            <div class="row d-flex justify-content-center" *ngIf="isLoggedIn">-->
+<!--              Bem vindo, {{ user.displayName }}!-->
+<!--              <button (click)="authService.logout()">Logout</button>-->
+<!--            </div>-->
+            <button (click)="loginWithGoogle()">Login com Google</button>
           </div>
         </div>
       </div>

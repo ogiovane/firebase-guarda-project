@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth-service.service';
+import { AuthService } from '../../../services/auth-service.service';
 import { User } from 'firebase/auth';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -32,11 +32,16 @@ export class LoginComponent  {
       .catch(error => console.error(error));
   }
 
-  login() {
-    this.authService.loginWithEmailAndPassword(this.email, this.password).then(() => {
+  loginWithEmailPassword() {
+    this.authService.loginWithEmailPassword(this.email, this.password).then(() => {
       this.router.navigate(['/dashboard/default']); // Navega para o dashboard após o login bem-sucedido
     }).catch(error => {
       console.error('Erro ao fazer login', error);
     });
+  }
+
+  // Método opcional para registro
+  registerWithEmailPassword(email: string, password: string) {
+    this.authService.registerWithEmailPassword(this.email, this.password);
   }
 }

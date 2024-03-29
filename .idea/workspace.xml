@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9e353e79-9126-4ed4-837d-493bac2351e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/backup.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backup.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/prod.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/cautela.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/cautela.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/authentication/login/login.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/authentication/login/login.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/authentication/login/login.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/authentication/login/login.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/devolucao-material/devolucao-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/devolucao-material/devolucao-material.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/devolucao-material/devolucao-material.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/devolucao-material/devolucao-material.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/devolucao-material/devolucao-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/devolucao-material/devolucao-material.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/devolver-material/devolver-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/devolver-material/devolver-material.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/devolver-material/devolver-material.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/devolver-material/devolver-material.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/devolver-material/devolver-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/devolver-material/devolver-material.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/lista-materiais/lista-materiais.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/lista-materiais/lista-materiais.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/lista-materiais/lista-materiais.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/lista-materiais/lista-materiais.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/lista-materiais/lista-materiais.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/lista-materiais/lista-materiais.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/materiais-cautelados/materiais-cautelados.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/materiais-cautelados/materiais-cautelados.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/materiais-cautelados/materiais-cautelados.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/materiais-cautelados/materiais-cautelados.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/materiais-cautelados/materiais-cautelados.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/materiais-cautelados/materiais-cautelados.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/relatorio-cautelas/relatorio-cautelas.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/relatorio-cautelas/relatorio-cautelas.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/relatorio-cautelas/relatorio-cautelas.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/relatorio-cautelas/relatorio-cautelas.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/relatorio-cautelas/relatorio-cautelas.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/relatorio-cautelas/relatorio-cautelas.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/relatorio/relatorio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/relatorio/relatorio.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/relatorio/relatorio.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/relatorio/relatorio.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/relatorio/relatorio.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/relatorio/relatorio.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/services/auth-service.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/services/cadastros.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/cadastros.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/services/historico-cautelas.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/historico-cautelas.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/services/materiais.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/materiais.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/project/services/relatorio.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/relatorio.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2eL6PzIls1mzBy5qe3dmwhCMktX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "H:/SisGuarda/firebase-guarda-project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "npm.Angular CLI Server.executor": "Run",
+    "ts.external.directory.path": "H:\\SisGuarda\\firebase-guarda-project\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\SisGuarda\firebase-guarda-project\src\app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Tests (mantis-free-version)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e353e79-9126-4ed4-837d-493bac2351e2" name="Changes" comment="" />
+      <created>1711671490986</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711671490986</updated>
+      <workItem from="1711671492045" duration="5264000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

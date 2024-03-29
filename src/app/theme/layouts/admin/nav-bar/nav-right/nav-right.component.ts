@@ -1,6 +1,6 @@
 // angular import
 import { Component } from '@angular/core';
-import { AuthService } from '../../../../../project/services/auth-service.service';
+import { AuthService } from '../../../../../services/auth-service.service';
 import { Router } from '@angular/router';
 
 
@@ -36,7 +36,6 @@ export class NavRightComponent {
     {
       icon: 'ti ti-power',
       title: 'Logout',
-      click: this.authService.logout()
     }
   ];
 
@@ -51,7 +50,7 @@ export class NavRightComponent {
     },
     {
       icon: 'ti ti-lock',
-      title: 'Privacy Center'
+      title: 'Privacy Center',
     },
     {
       icon: 'ti ti-messages',
@@ -59,7 +58,7 @@ export class NavRightComponent {
     },
     {
       icon: 'ti ti-list',
-      title: 'History'
+      title: 'History',
     }
   ];
 }

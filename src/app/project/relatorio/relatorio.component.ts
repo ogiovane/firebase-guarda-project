@@ -1,7 +1,7 @@
 // src/app/relatorio/relatorio.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RelatorioService } from '../services/relatorio.service';
+import { RelatorioService } from '../../services/relatorio.service';
 import { CommonModule, DatePipe } from '@angular/common';
 
 

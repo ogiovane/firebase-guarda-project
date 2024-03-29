@@ -22,6 +22,8 @@ import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { OAuthModule, provideOAuthClient } from 'angular-oauth2-oidc';
 
 
 @NgModule({
@@ -40,9 +42,17 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     NavItemComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, HttpClientModule, OAuthModule.forRoot(
+      {
+        resourceServer: {
+          allowedUrls: ['https://accounts.google.com', 'http://localhost:4200/'],
+          sendAccessToken: true
+        }
+      }
+    ),
     AngularFireDatabaseModule, MatDialogModule,
-    BrowserAnimationsModule]
+    BrowserAnimationsModule],
+  providers: [provideOAuthClient()],
 })
 export class AppModule {
 }

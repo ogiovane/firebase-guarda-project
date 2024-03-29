@@ -5,11 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 // Project import
 import { AdminComponent } from './theme/layouts/admin/admin.component';
 import { GuestComponent } from './theme/layouts/guest/guest.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -18,7 +20,7 @@ const routes: Routes = [
       },
       {
         path: 'dashboard/default',
-        loadComponent: () => import('./demo/default/dashboard/dashboard.component')
+        loadComponent: () => import('./project/lista-materiais/lista-materiais.component').then(m => m.ListaMateriaisComponent)
       },
       {
         path: 'cadastro-militar',
@@ -75,10 +77,10 @@ const routes: Routes = [
     path: '',
     component: GuestComponent,
     children: [
-      // {
-      //   path: 'login',
-      //   loadComponent: () => import('./project/authentication/login/login.component')
-      // },
+      {
+        path: 'login',
+        loadComponent: () => import('./project/authentication/login/login.component').then(m => m.LoginComponent)
+      },
       {
         path: 'register',
         loadComponent: () => import('./demo/authentication/register/register.component')

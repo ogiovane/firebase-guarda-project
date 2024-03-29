@@ -1,10 +1,10 @@
 // src/app/components/cautelar-materiais/cautelar-materiais.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CadastrosService } from '../services/cadastros.service';
-import { MateriaisService } from '../services/materiais.service';
-import { HistoricoCautelasService } from '../services/historico-cautelas.service';
-import { AuthService } from '../services/auth-service.service';
+import { CadastrosService } from '../../services/cadastros.service';
+import { MateriaisService } from '../../services/materiais.service';
+import { HistoricoCautelasService } from '../../services/historico-cautelas.service';
+import { AuthService } from '../../services/auth-service.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';

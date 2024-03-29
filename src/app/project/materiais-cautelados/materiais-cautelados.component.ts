@@ -1,9 +1,9 @@
 // src/app/materiais-cautelados/materiais-cautelados.component.ts
 import { Component, OnInit } from '@angular/core';
-import { HistoricoCautelasService } from '../services/historico-cautelas.service';
+import { HistoricoCautelasService } from '../../services/historico-cautelas.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MateriaisService } from '../services/materiais.service';
+import { MateriaisService } from '../../services/materiais.service';
 
 interface TotaisMaterial {
   disponiveis: number;
