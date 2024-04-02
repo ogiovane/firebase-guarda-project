@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoricoService } from '../../services/historico.service';
 import { CommonModule, DatePipe } from '@angular/common';
+import { FilterMaterialPipe } from '../../pipes/filter-material.pipe';
+import { FormsModule } from '@angular/forms';
 
 export interface Historico {
   dataHoraCautela: Date;
@@ -16,13 +18,16 @@ export interface Historico {
   templateUrl: './historico-cautelas.component.html',
   imports: [
     DatePipe,
-    CommonModule
+    CommonModule,
+    FilterMaterialPipe,
+    FormsModule
   ],
   standalone: true
 })
 
 export class HistoricoCautelasComponent implements OnInit {
   historico: Historico[] = [];
+  searchText: string;
 
   constructor(private historicoService: HistoricoService) {
   }

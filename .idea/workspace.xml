@@ -4,104 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e353e79-9126-4ed4-837d-493bac2351e2" name="Changes" comment="Tela de login funcionando">
-      <change afterPath="$PROJECT_DIR$/firebase-guarda-project.rar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firebase-guarda-project2.rar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firebase-guarda-project3.rar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/baixar-material/baixar-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/baixar-material/baixar-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/baixar-material/baixar-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/baixar-material/baixar-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-militares/cadastro-militares.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-militares/cadastro-militares.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-militares/cadastro-militares.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cadastro-militares/cadastro-militares.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolver-material/devolver-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolver-material/devolver-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolver-material/devolver-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/devolver-material/devolver-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-cadastro/editar-cadastro.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-cadastro/editar-cadastro.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-cadastro/editar-cadastro.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-cadastro/editar-cadastro.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-material/historico-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-material/historico-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-material/historico-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/historico-material/historico-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio-cautelas/relatorio-cautelas.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio-cautelas/relatorio-cautelas.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio-cautelas/relatorio-cautelas.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio-cautelas/relatorio-cautelas.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/upload-csv/upload-csv.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/upload-csv/upload-csv.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/upload-csv/upload-csv.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/upload-csv/upload-csv.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/guest.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/pipes/sort.pipe.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/services/historico.service.ts" afterDir="false" />
+    <list default="true" id="9e353e79-9126-4ed4-837d-493bac2351e2" name="Changes" comment="Historico cautelas OK">
+      <change afterPath="$PROJECT_DIR$/src/app/pipes/filter-material.pipe.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/pipes/filter-material.pipe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-material/cadastro-material.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-materiais/cautelar-materiais.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cautelar-material/cautelar-material.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/auth-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/auth-service.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/cadastros.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/cadastros.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/historico-cautelas.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/historico-cautelas.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/navigation/nav-content/nav-content.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/navigation/nav-content/nav-content.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/navigation/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/navigation/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +98,7 @@
       <workItem from="1711671492045" duration="9658000" />
       <workItem from="1711819043257" duration="4576000" />
       <workItem from="1711907680449" duration="27820000" />
-      <workItem from="1712025623401" duration="8401000" />
+      <workItem from="1712025623401" duration="9063000" />
     </task>
     <task id="LOCAL-00001" summary="Tela de login funcionando">
       <option name="closed" value="true" />
@@ -200,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711677869654</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Historico cautelas OK">
+      <option name="closed" value="true" />
+      <created>1712056803543</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712056803543</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +125,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Tela de login funcionando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tela de login funcionando" />
+    <MESSAGE value="Historico cautelas OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="Historico cautelas OK" />
   </component>
 </project>

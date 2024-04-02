@@ -1,22 +1,28 @@
-<table class="table table-striped table-hover">
-  <thead>
-  <tr>
-    <th>Data/Hora Cautela</th>
-    <th>Tipo</th>
-    <th>Descrição do Material</th>
-    <th>Nome</th>
-    <th>Data/Hora Devolução</th>
-    <th>Responsável pela Devolução</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let item of historico">
-    <td>{{ item.dataHoraCautela | date: 'dd/MM/yyyy HH:mm' }}</td>
-    <td>{{ item.tipo }}</td>
-    <td>{{ item.descricaoMaterial }}</td>
-    <td>{{ item.nome }}</td>
-    <td>{{ item.dataHoraDevolucao | date: 'dd/MM/yyyy HH:mm' }}</td>
-    <td>{{ item.responsavelDevolucao }}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="mb-3">
+  <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Filtrar por Descrição do Material. Ex.: RP5099">
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>Data Cautela</th>
+      <th>Tipo</th>
+      <th>Descrição</th>
+      <th>Militar que cautelou</th>
+      <th>Data Devolução</th>
+      <th>Resp. pela Devolução</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of historico | filterMaterial: searchText">
+      <td>{{ item.dataHoraCautela | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ item.tipo }}</td>
+      <td>{{ item.descricaoMaterial }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.dataHoraDevolucao | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ item.responsavelDevolucao }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
