@@ -1,0 +1,11 @@
+<!-- baixar-material.component.html -->
+<div class="container">
+  <h2>Baixar Material</h2>
+  <form (ngSubmit)="baixarMaterial()">
+    <div class="mb-3">
+      <label for="motivo" class="form-label">Motivo da Baixa:</label>
+      <input type="text" class="form-control" id="motivo" [(ngModel)]="motivo" name="motivo" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+</div>

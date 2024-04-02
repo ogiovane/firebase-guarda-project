@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <h2>Listagem de Cadastros</h2>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Buscar por primeiro nome" [(ngModel)]="searchText" (keyup.enter)="buscaPorNome()">
+    <button class="btn btn-outline-secondary" type="button" (click)="buscaPorNome()">Buscar</button>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Posto</th>
+      <th scope="col">RG</th>
+      <th scope="col">NF</th>
+      <th scope="col">Lotação</th>
+      <th scope="col">Celular</th>
+      <th scope="col">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cadastro of cadastros">
+      <td>{{ cadastro.nome }}</td>
+      <td>{{ cadastro.posto }}</td>
+      <td>{{ cadastro.rg }}</td>
+      <td>{{ cadastro.nf }}</td>
+      <td>{{ cadastro.lotacao }}</td>
+      <td>{{ cadastro.celular }}</td>
+      <td>
+        <button class="btn btn-primary me-2" (click)="editCadastro(cadastro.id)">Editar</button>
+        <button class="btn btn-danger" (click)="deleteCadastro(cadastro.id)">Excluir</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -26,7 +26,7 @@ export const NavigationItems: NavigationItem[] = [
     children: [
       {
         id: 'default',
-        title: 'Default',
+        title: 'Início',
         type: 'item',
         classes: 'nav-item',
         url: '/dashboard/default',
@@ -36,8 +36,60 @@ export const NavigationItems: NavigationItem[] = [
     ]
   },
   {
-    id: 'elements',
+    id: 'cautelas',
     title: 'Cautelas',
+    type: 'group',
+    icon: 'icon-navigation',
+    children: [
+      {
+        id: 'cautelas',
+        title: 'Cautelar Material',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/cautelar-material',
+        icon: 'ti ti-shopping-cart'
+      },
+      {
+        id: 'color',
+        title: 'Materiais Cautelados',
+        type: 'item',
+        classes: 'nav-item',
+        url: 'materiais-cautelados',
+        icon: 'ti ti-list'
+      },
+    ]
+  },
+  {
+    id: 'elements',
+    title: 'Materiais',
+    type: 'group',
+    icon: 'icon-navigation',
+    children: [
+
+
+      {
+        id: 'cadastro-material',
+        title: 'Cadastrar Material',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/cadastro-material',
+        icon: 'ti ti-circle-plus'
+      },
+      {
+        id: 'listar-materiais',
+        title: 'Listar Materiais',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/listar-materiais',
+        icon: 'ti ti-list'
+      },
+
+
+    ]
+  },
+  {
+    id: 'authentication',
+    title: 'Cadastros',
     type: 'group',
     icon: 'icon-navigation',
     children: [
@@ -49,76 +101,37 @@ export const NavigationItems: NavigationItem[] = [
         url: '/cadastro-militar',
         icon: 'ti ti-user-plus'
       },
+
       {
-        id: 'cadastro-material',
-        title: 'Cadastrar Material',
+        id: 'tabler',
+        title: 'Listar Cadastros',
         type: 'item',
         classes: 'nav-item',
-        url: '/cadastro-material',
-        icon: 'ti ti-circle-plus'
-      },
-      {
-        id: 'cautelas',
-        title: 'Cautelar Material',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/cautelar-material',
-        icon: 'ti ti-shopping-cart'
-      },
-      {
-        id: 'listar-materiais',
-        title: 'Listar Materiais',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/listar-materiais',
-        icon: 'ti ti-list'
-      },
-      {
-        id: 'color',
-        title: 'Materiais Cautelados',
-        type: 'item',
-        classes: 'nav-item',
-        url: 'materiais-cautelados',
-        icon: 'ti ti-brush'
-      },
+        url: 'lista-cadastros',
+        icon: 'ti ti-list',
+        // target: true,
+        // external: true
+      }
       // {
-      //   id: 'tabler',
-      //   title: 'Tabler',
+      //   id: 'login',
+      //   title: 'Login',
       //   type: 'item',
       //   classes: 'nav-item',
-      //   url: 'https://tabler-icons.io/',
-      //   icon: 'ti ti-leaf',
+      //   url: '/login',
+      //   icon: 'ti ti-login',
       //   target: true,
-      //   external: true
+      //   breadcrumbs: false
+      // },
+      // {
+      //   id: 'register',
+      //   title: 'Register',
+      //   type: 'item',
+      //   classes: 'nav-item',
+      //   url: '/register',
+      //   icon: 'ti ti-user-plus',
+      //   target: true,
+      //   breadcrumbs: false
       // }
-    ]
-  },
-  {
-    id: 'authentication',
-    title: 'Authentication',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
-      {
-        id: 'login',
-        title: 'Login',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/login',
-        icon: 'ti ti-login',
-        target: true,
-        breadcrumbs: false
-      },
-      {
-        id: 'register',
-        title: 'Register',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/register',
-        icon: 'ti ti-user-plus',
-        target: true,
-        breadcrumbs: false
-      }
     ]
   },
   {
@@ -134,7 +147,15 @@ export const NavigationItems: NavigationItem[] = [
         url: '/relatorio',
         classes: 'nav-item',
         icon: 'ti ti-report'
-      }
+      },
+      {
+        id: 'sample-page',
+        title: 'Histórico Cautelas',
+        type: 'item',
+        url: '/historico-cautelas',
+        classes: 'nav-item',
+        icon: 'ti ti-report'
+      },
     ]
   }
 ];

@@ -1,0 +1,52 @@
+<!--<div class="relatorio-cautelas">-->
+<!--  <form [formGroup]="form" (ngSubmit)="buscarHistorico()" class="mb-4">-->
+<!--    <div class="form-row">-->
+<!--      <div class="form-group col-md-6">-->
+<!--        <label for="dataInicio">Data e Hora de Início</label>-->
+<!--        <input type="datetime-local" class="form-control" id="dataInicio" formControlName="dataInicio">-->
+<!--      </div>-->
+<!--      <div class="form-group col-md-6">-->
+<!--        <label for="dataFim">Data e Hora de Término</label>-->
+<!--        <input type="datetime-local" class="form-control" id="dataFim" formControlName="dataFim">-->
+<!--      </div>-->
+<!--      <div class="form-group col-md-6">-->
+<!--        <label for="nfComandante">NF Comandante da Guarda</label>-->
+<!--        <input type="text" class="form-control" id="nfComandante" formControlName="nfComandante">-->
+<!--        <button class="btn btn-primary" type="button" (click)="validarNF()">Buscar</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div *ngIf="comandante">-->
+<!--      <p>Nome: {{ comandante.posto }} {{ comandante.nome }}</p>-->
+<!--    </div>-->
+<!--    <button class="btn btn-success" type="button">Gerar Relatório</button>-->
+<!--  </form>-->
+
+<!--  <div *ngIf="relatorio && relatorio.length > 0">-->
+<!--    <h2>Relatório de Cautelas - Serviço de Guarda 1º BPM</h2>-->
+<!--    <p>Período: {{ form.value.dataInicio | date: 'shortDate' }} até {{ form.value.dataFim | date: 'shortDate' }}</p>-->
+<!--    <p>Comandante da Guarda: {{ comandante?.posto }} {{ comandante?.nome }} / RG: {{ comandante?.rg }}</p>-->
+
+<!--    <table class="table">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>Data/Hora da Cautela</th>-->
+<!--        <th>Tipo</th>-->
+<!--        <th>Descrição</th>-->
+<!--        <th>Nome</th>-->
+<!--        <th>Nº Cupom de Abastecimento</th>-->
+<!--        <th>Data/Hora da Devolução</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let item of historicos">-->
+<!--        <td>{{ item.dataHoraCautela | date: 'short' }}</td>-->
+<!--        <td>{{ item.tipo }}</td>-->
+<!--        <td>{{ item.descricaoMaterial }}</td>-->
+<!--        <td>{{ item.posto }} {{ item.nome }}</td>-->
+<!--        <td>{{ item.numeroCupomAbastecimento }}</td>-->
+<!--        <td>{{ item.dataHoraDevolucao | date: 'short' }}</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->

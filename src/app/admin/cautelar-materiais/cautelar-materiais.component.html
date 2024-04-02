@@ -1,0 +1,59 @@
+<!-- src/app/components/cautelar-materiais/cautelar-materiais.component.html -->
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="form-group">
+      <label for="nf">NF:</label>
+      <input type="text" id="nf" formControlName="nf" class="form-control" (keyup.enter)="validarNF()">
+      <button type="button" class="btn btn-primary botao-validar" (click)="validarNF()">Validar</button>
+    </div>
+
+    <div class="form-group">
+      <label for="rg">RG:</label>
+      <input type="text" id="rg" formControlName="rg" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" formControlName="nome" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="posto">Posto:</label>
+      <input type="text" id="posto" formControlName="posto" class="form-control">
+    </div>
+
+    <!-- Adicionar dentro do formulário, após os campos existentes -->
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo de Material</label>
+      <select class="form-select" id="tipo" formControlName="tipo" (change)="carregarMateriaisPorTipo()">
+        <option value="">Selecione um tipo</option>
+        <option value="Chave">Chave</option>
+        <option value="Cartão">Cartão</option>
+        <option value="Documento">Documento</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="descricaoMaterial">Material</label>
+      <select class="form-select" id="descricaoMaterial" formControlName="materialId" (change)="atualizarDescricaoMaterial($event)">
+        <option value="">Selecione...</option>
+        <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricaoMaterial }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select class="form-select" id="status" formControlName="status">
+<!--        <option value="Disponível">Disponível</option>-->
+        <option value="Cautelado">Cautelado</option>
+        <option value="Emprestado">Emprestado para Cia</option>
+        <option value="P4">Com a P/4</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-success mr-2">Salvar</button>
+      <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

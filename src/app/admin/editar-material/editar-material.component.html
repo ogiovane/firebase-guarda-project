@@ -1,0 +1,32 @@
+<!-- editar-material.component.html -->
+<div class="container">
+  <h2>Editar Material</h2>
+  <form (ngSubmit)="editarMaterial()">
+    <div class="mb-3">
+      <label for="descricao" class="form-label">Descrição:</label>
+      <input type="text" class="form-control" id="descricao" [(ngModel)]="material.descricaoMaterial" name="descricao" required>
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status:</label>
+      <select class="form-select" id="status" [(ngModel)]="material.status" (ngModelChange)="onStatusChange($event)" name="status">
+        <option value="Disponível">Disponível</option>
+        <option value="Baixado">Baixado</option>
+        <option value="P4">Com a P/4</option>
+      </select>
+    </div>
+    <!-- Campo Motivo exibido somente se o status for Baixado -->
+    <div class="mb-3" *ngIf="material.status === 'Baixado'">
+      <label for="motivo" class="form-label">Motivo da Baixa:</label>
+      <input type="text" class="form-control" id="motivo" [(ngModel)]="material.motivoBaixa" name="motivo">
+    </div>
+    <div class="mb-3" *ngIf="material.status === 'P4'">
+      <label for="integranteP4" class="form-label">A quem foi entregue?</label>
+      <input type="text" class="form-control" id="integranteP4" [(ngModel)]="material.integranteP4" name="integranteP4">
+    </div>
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo:</label>
+      <input type="text" class="form-control" id="tipo" [(ngModel)]="material.tipo" name="tipo" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+  </form>
+</div>

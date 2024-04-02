@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { map, tap } from 'rxjs/operators';
 import { Observable, take } from 'rxjs';
+import { AuthService } from './services/auth-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  constructor(private afAuth: AngularFireAuth, private authService: AuthService, private router: Router) {}
 
-  canActivate(): Observable<boolean> {
-    return this.afAuth.authState.pipe(
-      take(1),
-      map(user => !!user), // Converte o objeto user em um booleano
-      tap(loggedIn => {
-        if (!loggedIn) {
-          console.log('Acesso negado');
-          this.router.navigate(['/login']); // Redireciona para a página de login
-        }
-      })
-    );
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    return this.authService.isLoggedIn().pipe(map(isLoggedIn => {
+      const isLoginPage = state.url.includes('/login');
+
+      if (isLoggedIn && isLoginPage) {
+        // Usuário está logado e tentando acessar a página de login, redireciona para o dashboard
+        this.router.navigate(['/dashboard/default']);
+        return false;
+      } else if (!isLoggedIn && !isLoginPage) {
+        // Usuário não está logado e tentando acessar uma rota protegida, redireciona para login
+        this.router.navigate(['/login']);
+        return false;
+      }
+
+      return true;
+    }));
   }
 }

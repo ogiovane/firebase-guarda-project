@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <h2>Editar Cadastro</h2>
+  <form (ngSubmit)="updateCadastro()" class="mt-4">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" [(ngModel)]="cadastro.nome" name="nome" required>
+    </div>
+    <div class="mb-3">
+      <label for="posto" class="form-label">Posto</label>
+      <input type="text" class="form-control" id="posto" [(ngModel)]="cadastro.posto" name="posto">
+    </div>
+    <div class="mb-3">
+      <label for="rg" class="form-label">RG</label>
+      <input type="text" class="form-control" id="rg" [(ngModel)]="cadastro.rg" name="rg">
+    </div>
+    <div class="mb-3">
+      <label for="nf" class="form-label">NF</label>
+      <input type="text" class="form-control" id="nf" [(ngModel)]="cadastro.nf" name="nf">
+    </div>
+    <div class="mb-3">
+      <label for="lotacao" class="form-label">Lotação</label>
+      <input type="text" class="form-control" id="lotacao" [(ngModel)]="cadastro.lotacao" name="lotacao">
+    </div>
+    <div class="mb-3">
+      <label for="celular" class="form-label">Celular</label>
+      <input type="text" class="form-control" id="celular" [(ngModel)]="cadastro.celular" name="celular">
+    </div>
+    <div class="mb-3">
+      <label for="celular" class="form-label">Email</label>
+      <input type="text" class="form-control" id="email" [(ngModel)]="cadastro.email" name="email">
+    </div>
+    <button type="submit" class="btn btn-success">Atualizar</button>
+  </form>
+</div>

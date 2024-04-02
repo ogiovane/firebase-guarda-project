@@ -24,6 +24,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule, provideOAuthClient } from 'angular-oauth2-oidc';
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { NgModule } from '@angular/core';
         }
       }
     ),
-    AngularFireDatabaseModule, MatDialogModule],
+    AngularFireDatabaseModule, MatDialogModule, NgxPaginationModule],
   providers: [provideOAuthClient()],
 })
 export class AppModule {

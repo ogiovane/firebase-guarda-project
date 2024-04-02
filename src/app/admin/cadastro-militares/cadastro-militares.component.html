@@ -1,0 +1,84 @@
+<div class="container mt-5">
+  <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <!-- Posto/Graduação -->
+    <div class="mb-3">
+      <label for="posto" class="form-label">Posto/Graduação</label>
+      <select class="form-select" id="posto" formControlName="posto">
+        <option value="">Selecione um posto/graduação</option>
+        <option *ngFor="let posto of postos" [value]="posto">{{ posto }}</option>
+      </select>
+    </div>
+
+    <!-- Nome Completo -->
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="nome" formControlName="nome">
+      <div *ngIf="cadastroForm.get('nome').errors && cadastroForm.get('nome').touched"
+           class="text-danger">
+        <div *ngIf="cadastroForm.get('nome').errors['required']">Nome completo é obrigatório.</div>
+        <div *ngIf="cadastroForm.get('nome').errors['pattern']">Apenas letras são permitidas.</div>
+      </div>
+    </div>
+
+    <!-- RG -->
+    <div class="mb-3">
+      <label for="rg" class="form-label">RG</label>
+      <input type="text" class="form-control" id="rg" formControlName="rg">
+      <div *ngIf="cadastroForm.get('rg').errors && cadastroForm.get('rg').touched" class="text-danger">
+        <div *ngIf="cadastroForm.get('rg').errors['required']">RG é obrigatório.</div>
+        <div *ngIf="cadastroForm.get('rg').errors['maxlength']">RG deve ter no máximo 6 números.</div>
+        <div *ngIf="cadastroForm.get('rg').errors['pattern']">Somente números são permitidos.</div>
+      </div>
+    </div>
+
+    <!-- NF -->
+    <div class="mb-3">
+      <label for="nf" class="form-label">NF</label>
+      <input type="text" class="form-control" id="nf" formControlName="nf">
+      <div *ngIf="cadastroForm.get('nf').errors && cadastroForm.get('nf').touched" class="text-danger">
+        <div *ngIf="cadastroForm.get('nf').errors['required']">NF é obrigatório.</div>
+        <div *ngIf="cadastroForm.get('nf').errors['maxlength']">NF deve ter no máximo 10 números.</div>
+        <div *ngIf="cadastroForm.get('nf').errors['pattern']">Somente números são permitidos.</div>
+      </div>
+    </div>
+
+    <!-- Celular -->
+    <div class="mb-3">
+      <label for="celular" class="form-label">Celular</label>
+      <input type="text" class="form-control" id="celular" formControlName="celular">
+      <div *ngIf="cadastroForm.get('celular').errors && cadastroForm.get('celular').touched" class="text-danger">
+        <div *ngIf="cadastroForm.get('celular').errors['required']">Celular é obrigatório.</div>
+        <div *ngIf="cadastroForm.get('celular').errors['maxlength']">Celular deve ter no máximo 11 números.</div>
+        <div *ngIf="cadastroForm.get('celular').errors['pattern']">Somente números são permitidos.</div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" class="form-control" formControlName="email">
+      <div *ngIf="cadastroForm.get('email').errors?.['email']" class="text-danger">
+        Email inválido.
+      </div>
+    </div>
+
+    <!-- Lotação -->
+    <div class="mb-3">
+      <label for="lotacao" class="form-label">Lotação</label>
+      <select class="form-select" id="lotacao" formControlName="lotacao">
+        <option value="">Selecione uma lotação</option>
+        <option *ngFor="let lotacao of lotacoes" [value]="lotacao">{{ lotacao }}</option>
+      </select>
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+
+    <!-- Botões -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-success me-2" [disabled]="!cadastroForm.valid">Salvar</button>
+      <button type="button" class="btn btn-danger" (click)="cadastroForm.reset()">Cancelar</button>
+    </div>
+  </form>
+</div>

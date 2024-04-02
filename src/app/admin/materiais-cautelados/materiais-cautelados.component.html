@@ -1,0 +1,89 @@
+<!-- src/app/materiais-cautelados/materiais-cautelados.component.html -->
+<div class="container mt-4">
+  <h3>Materiais Cautelados</h3>
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>Data/Hora Cautela</th>
+      <th>Militar</th>
+      <th>Tipo</th>
+      <th>Descrição</th>
+      <th>Status</th>
+      <th>Ação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let material of materiais">
+      <td>{{ material.dataHoraCautela.toDate() | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ material.posto }} {{ material.nome }}</td>
+      <td>{{ material.tipo }}</td>
+      <td>{{ material.descricaoMaterial }}</td>
+      <td>{{ material.status }}</td>
+      <td>
+        <button (click)="devolverMaterial(material)" class="btn btn-danger">Devolver</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Adicionar verificação para exibir mensagem caso não haja materiais -->
+  <div *ngIf="materiais.length === 0" class="alert alert-info" role="alert">
+    Nenhum material cautelado.
+  </div>
+</div>
+<hr>
+<div class="container mt-4">
+  <h3>Materiais Baixados</h3>
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Descrição</th>
+      <th>Status</th>
+      <th>Motivo Baixa</th>
+      <th>Ação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let material of materiaisBaixados">
+      <td>{{ material.tipo }}</td>
+      <td>{{ material.descricaoMaterial }}</td>
+      <td>{{ material.status }}</td>
+      <td>{{ material.motivoBaixa }}</td>
+      <td>
+        <button (click)="receberMaterial(material)" class="btn btn-danger">Receber</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Adicionar verificação para exibir mensagem caso não haja materiais -->
+  <div *ngIf="materiaisBaixados.length === 0" class="alert alert-info" role="alert">
+    Nenhum material baixado.
+  </div>
+</div>
+<hr>
+
+<div class="container mt-4">
+  <h3>Contabilização</h3>
+  <div class="col-md-3">
+  <table class="table table-bordered text-center">
+    <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Disponíveis</th>
+      <th>Cautelados</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tipo of totaisMateriais | keyvalue">
+      <td>{{ tipo.key }}</td>
+      <td>{{ tipo.value.disponiveis }}</td>
+      <td>{{ tipo.value.cautelados }}</td>
+      <td>{{ tipo.value.total }}</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

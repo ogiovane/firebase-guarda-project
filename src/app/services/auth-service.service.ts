@@ -1,10 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable, of } from 'rxjs';
 import { User } from 'firebase/auth';
 import { Router } from '@angular/router';
-import { AuthConfig, JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,16 @@ export class AuthService {
         this.saveUserSession();
       }
     });
+  }
+
+  isLoggedIn(): Observable<boolean> {
+    const firebaseLoggedIn = this.afAuth.authState.pipe(map(user => !!user));
+    const oauthLoggedIn = of(this.oAuthService.hasValidAccessToken());
+
+    // Aqui usamos a função combineLatest importada corretamente
+    return combineLatest([firebaseLoggedIn, oauthLoggedIn]).pipe(
+      map(([firebase, oauth]) => firebase || oauth)
+    );
   }
 
   saveUserSession() {
@@ -119,5 +130,6 @@ export class AuthService {
 
     return null; // Retornar nulo ou algum valor padrão se nenhum usuário estiver logado
   }
+
 }
 
