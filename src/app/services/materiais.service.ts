@@ -28,12 +28,14 @@ export class MateriaisService {
         // Processamento dos totais por tipo
         const totaisPorTipo = materiais.reduce((acc, material) => {
           if (!acc[material.tipo]) {
-            acc[material.tipo] = { disponiveis: 0, cautelados: 0, total: 0 };
+            acc[material.tipo] = { disponiveis: 0, cautelados: 0, baixados: 0, total: 0 };
           }
           if (material.status === 'Disponível') {
             acc[material.tipo].disponiveis += 1;
           } else if (material.status === 'Cautelado') {
             acc[material.tipo].cautelados += 1;
+          }else if (material.status === 'Baixado') {
+            acc[material.tipo].baixados += 1;
           }
           acc[material.tipo].total += 1;
 
@@ -46,5 +48,9 @@ export class MateriaisService {
 
   getMateriaisDisponiveisPorTipo(tipo: string): Observable<any[]> {
     return this.firestore.collection('materiais', ref => ref.where('tipo', '==', tipo).where('status', '==', 'Disponível')).valueChanges({ idField: 'id' });
+  }
+
+  deleteMaterial(id: string): Promise<void> {
+    return this.firestore.collection('materiais').doc(id).delete();
   }
 }

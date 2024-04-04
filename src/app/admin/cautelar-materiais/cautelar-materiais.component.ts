@@ -32,6 +32,8 @@ export class CautelarMateriaisComponent implements OnInit {
   nomeUsuario: any; // Substitua por seu modelo de usuário, se necessário
   materiaisDisponiveis$: Observable<Material[]>;
   materiaisDisponiveis: Material[] = [];
+  militarNaoEncontrado: boolean = false;
+
 
   constructor(
     private fb: FormBuilder,
@@ -111,6 +113,9 @@ export class CautelarMateriaisComponent implements OnInit {
         this.form.get('rg')?.disable();
         this.form.get('nome')?.disable();
         this.form.get('posto')?.disable();
+      }else{
+        this.militarNaoEncontrado = true;
+        console.log('Militar não encontrado:', this.militarNaoEncontrado);
       }
     });
   }
@@ -146,7 +151,7 @@ export class CautelarMateriaisComponent implements OnInit {
       const formData = this.form.getRawValue(); // Use getRawValue para incluir valores de campos desabilitados
 
       // Ajuste aqui assumindo que nomeUsuario é uma string
-      formData.responsavelCautela = "JOAOZINHO"; // Atribuição direta do nome do usuário
+      formData.responsavelCautela = ""; // Atribuição direta do nome do usuário
 
       // Implementação da lógica para salvar os dados no Firebase
       this.historicoCautelasService.addCautela(formData).then(() => {

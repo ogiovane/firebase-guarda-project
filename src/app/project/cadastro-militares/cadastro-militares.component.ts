@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class CadastroMilitaresComponent {
     lotacao: new FormControl('', Validators.required),
   });
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore, private router: Router) {}
 
 
 
@@ -56,5 +57,9 @@ export class CadastroMilitaresComponent {
       console.error(error);
       this.errorMessage = 'Erro ao salvar dados';
     }
+  }
+
+  cancelar() {
+    this.router.navigate(['/dashboard/default']);
   }
 }

@@ -2,34 +2,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { QueryFn } from '@angular/fire/compat/database';
-import { map } from 'rxjs/operators';
+import { Cadastro } from '../interfaces/cadastro';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CadastrosService {
+  postos = ['ALSD', 'SD', 'CB', '3SGT','2SGT','1SGT', 'SUBTEN', 'ALOF', 'ASPOF', 'TEN', 'CAP', 'MAJ', 'TEN CEL', 'CEL'];
+  lotacoes = ['1CIA', '2CIA', '3CIA', '4CIA', '5CIA', 'PCS', 'FT', 'OUTRA UNIDADE'];
+
   constructor(private firestore: AngularFirestore) {}
 
-  getCadastros(searchText?: string) {
-    // Iniciar com uma referência à coleção
-    let collection = this.firestore.collection('cadastros', ref => {
-      let query: firebase.default.firestore.CollectionReference | firebase.default.firestore.Query = ref;
-      if (searchText) {
-        // Aplica os filtros na busca. Ajuste conforme a necessidade para case-sensitive/insensitive
-        query = query.where('nome', '>=', searchText)
-          .where('nome', '<=', searchText + '\uf8ff');
-      }
-      return query;
-    });
-
-    return collection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as {[key: string]: any}; // Asserção de tipo
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
+  getCadastros(): Observable<Cadastro[]> {
+    return this.firestore.collection<Cadastro>('cadastros', ref => ref.orderBy('nome', 'asc'))
+      .valueChanges({ idField: 'id' });
   }
   deleteCadastro(id: string): Promise<void> {
     return this.firestore.collection('cadastros').doc(id).delete();
@@ -46,6 +33,12 @@ export class CadastrosService {
 
   getCadastroById(id: string): Observable<any> {
     return this.firestore.collection('cadastros').doc(id).valueChanges();
+  }
+
+  buscarCadastros(nome: string): Observable<Cadastro[]> {
+    return this.firestore.collection<Cadastro>('cadastros', ref =>
+      ref.where('nome', '==', nome)
+    ).valueChanges();
   }
 
 }

@@ -4,7 +4,10 @@
   <form (ngSubmit)="editarMaterial()">
     <div class="mb-3">
       <label for="descricao" class="form-label">Descrição:</label>
-      <input type="text" class="form-control" id="descricao" [(ngModel)]="material.descricaoMaterial" name="descricao" required>
+      <input type="text" class="form-control" id="descricao"
+             [value]="material.descricaoMaterial"
+             (input)="onDescricaoChange($event)"
+             name="descricao" required>
     </div>
     <div class="mb-3">
       <label for="status" class="form-label">Status:</label>
@@ -25,8 +28,16 @@
     </div>
     <div class="mb-3">
       <label for="tipo" class="form-label">Tipo:</label>
-      <input type="text" class="form-control" id="tipo" [(ngModel)]="material.tipo" name="tipo" required>
+      <select class="form-select" id="tipo" [(ngModel)]="material.tipo" name="tipo" required>
+        <option value="">Selecione um tipo</option>
+        <option value="Chave">Chave</option>
+        <option value="Cartão">Cartão</option>
+        <option value="Documento">Documento</option>
+        <option value="Outros">Outros</option>
+      </select>
     </div>
-    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <button type="submit" class="btn btn-primary me-2">Atualizar</button>
+    <button type="button" class="btn btn-secondary me-2" (click)="cancelarEdicao()">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="excluirMaterial()">Excluir</button>
   </form>
 </div>

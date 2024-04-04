@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Historico } from '../services/historico.service';
+import { Historico } from '../interfaces/historico';
 
 @Pipe({
   standalone: true,

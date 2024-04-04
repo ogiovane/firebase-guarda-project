@@ -1,13 +1,17 @@
-<div class="container mt-5">
+<div class="container mt-2">
   <h2>Editar Cadastro</h2>
   <form (ngSubmit)="updateCadastro()" class="mt-4">
     <div class="mb-3">
       <label for="nome" class="form-label">Nome</label>
       <input type="text" class="form-control" id="nome" [(ngModel)]="cadastro.nome" name="nome" required>
     </div>
+
+    <!-- Campo Posto modificado para lista suspensa -->
     <div class="mb-3">
       <label for="posto" class="form-label">Posto</label>
-      <input type="text" class="form-control" id="posto" [(ngModel)]="cadastro.posto" name="posto">
+      <select class="form-select" id="posto" [(ngModel)]="cadastro.posto" name="posto">
+        <option *ngFor="let posto of postos" [value]="posto">{{ posto }}</option>
+      </select>
     </div>
     <div class="mb-3">
       <label for="rg" class="form-label">RG</label>
@@ -17,18 +21,25 @@
       <label for="nf" class="form-label">NF</label>
       <input type="text" class="form-control" id="nf" [(ngModel)]="cadastro.nf" name="nf">
     </div>
+
+    <!-- Campo Lotação modificado para lista suspensa -->
     <div class="mb-3">
       <label for="lotacao" class="form-label">Lotação</label>
-      <input type="text" class="form-control" id="lotacao" [(ngModel)]="cadastro.lotacao" name="lotacao">
+      <select class="form-select" id="lotacao" [(ngModel)]="cadastro.lotacao" name="lotacao">
+        <option *ngFor="let lotacao of lotacoes" [value]="lotacao">{{ lotacao }}</option>
+      </select>
     </div>
+
     <div class="mb-3">
       <label for="celular" class="form-label">Celular</label>
       <input type="text" class="form-control" id="celular" [(ngModel)]="cadastro.celular" name="celular">
     </div>
     <div class="mb-3">
-      <label for="celular" class="form-label">Email</label>
-      <input type="text" class="form-control" id="email" [(ngModel)]="cadastro.email" name="email">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="cadastro.email" name="email">
     </div>
-    <button type="submit" class="btn btn-success">Atualizar</button>
+    <button type="submit" class="btn btn-success me-2">Atualizar</button>
+    <button type="button" class="btn btn-secondary me-2" (click)="cancelarEdicao()">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="excluirMilitar()">Excluir</button>
   </form>
 </div>

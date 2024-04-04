@@ -1,5 +1,5 @@
 <!-- src/app/materiais-cautelados/materiais-cautelados.component.html -->
-<div class="container mt-4">
+<div class="container mt-3">
   <h3>Materiais Cautelados</h3>
   <table class="table table-striped table-hover">
     <thead>
@@ -32,7 +32,7 @@
   </div>
 </div>
 <hr>
-<div class="container mt-4">
+<div class="container mt-3">
   <h3>Materiais Baixados</h3>
   <table class="table table-striped table-hover">
     <thead>
@@ -73,6 +73,7 @@
       <th>Tipo</th>
       <th>Disponíveis</th>
       <th>Cautelados</th>
+      <th>Baixados</th>
       <th>Total</th>
     </tr>
     </thead>
@@ -81,9 +82,11 @@
       <td>{{ tipo.key }}</td>
       <td>{{ tipo.value.disponiveis }}</td>
       <td>{{ tipo.value.cautelados }}</td>
+      <td>{{ tipo.value.baixados }}</td>
       <td>{{ tipo.value.total }}</td>
     </tr>
     </tbody>
   </table>
   </div>
 </div>
+

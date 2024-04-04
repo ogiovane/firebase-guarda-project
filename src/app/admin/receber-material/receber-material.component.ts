@@ -61,7 +61,7 @@ export class ReceberMaterialComponent implements OnInit {
       .get().pipe(first()).toPromise().then(querySnapshot => {
         const updates = [];
         querySnapshot.forEach(doc => {
-          updates.push(doc.ref.update({ status: 'Disponível' }));
+          updates.push(doc.ref.update({ status: 'Disponível', motivoBaixa: '', integranteP4: '' }));
         });
         return Promise.all(updates);
       });

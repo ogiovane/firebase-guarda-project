@@ -1,5 +1,5 @@
-<div class="container mt-4">
-  <form [formGroup]="cadastroForm" (ngSubmit)="salvarDados()">
+<div class="container mt-2">
+<form [formGroup]="cadastroForm" (ngSubmit)="salvarDados()">
     <div class="mb-3">
       <label for="tipo" class="form-label">Tipo</label>
       <select class="form-select" id="tipo" formControlName="tipo">
@@ -11,8 +11,8 @@
     </div>
 
     <div class="mb-3">
-      <label for="descricao" class="form-label">Descrição</label>
-      <input type="text" class="form-control" id="descricao" formControlName="descricao">
+      <label for="descricaoMaterial" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="descricaoMaterial" formControlName="descricaoMaterial">
     </div>
 
     <div class="mb-3">

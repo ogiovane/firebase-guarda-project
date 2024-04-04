@@ -35,6 +35,7 @@ export class ListaMateriaisComponent implements OnInit {
   materiais$: Observable<Material[]>;
   filtroStatus: string = 'todos';
   materiaisFiltrados: Material[] = [];
+  exibirMensagemSemResultados: boolean = false;
 
   constructor(private firestore: AngularFirestore, private router: Router, private dialog: MatDialog) {}
 
@@ -80,6 +81,12 @@ export class ListaMateriaisComponent implements OnInit {
       this.materiais$ = this.firestore.collection<Material>('materiais', ref =>
         ref.where('status', '==', this.filtroStatus)).valueChanges({ idField: 'id' });
     }
+
+    this.materiais$.subscribe({
+      next: (materiais) => {
+        this.exibirMensagemSemResultados = materiais.length === 0;
+      },
+    });
   }
 
   cadastrarMilitar(): void {

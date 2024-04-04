@@ -35,6 +35,8 @@ export class CautelarMaterialComponent implements OnInit {
   materiaisDisponiveis$: Observable<Material[]>;
   materiaisDisponiveis: Material[] = [];
   userData: any;
+  militarNaoEncontrado: boolean = false;
+
 
   constructor(private firestore: AngularFirestore, private fb: FormBuilder, private route: ActivatedRoute,
               private router: Router, private authService: AuthService) {
@@ -106,10 +108,17 @@ export class CautelarMaterialComponent implements OnInit {
           nome: militar.nome,
           posto: militar.posto
         });
+        this.militarNaoEncontrado = false;
       } else {
-        alert('Militar não encontrado.');
-      }
+        this.militarNaoEncontrado = true;      }
     });
+  }
+
+  filtrarSomenteNumeros(event: any): void {
+    // Obtém o valor do input e substitui tudo que não for dígito por vazio
+    const valorFiltrado = event.target.value.replace(/\D/g, '');
+    // Atualiza o valor do campo com o valor filtrado
+    event.target.value = valorFiltrado;
   }
 
   adicionarAoHistorico(dadosEmprestimo): void {
@@ -186,5 +195,9 @@ export class CautelarMaterialComponent implements OnInit {
 
   voltar(): void {
     this.router.navigate(['/listar-materiais']);
+  }
+
+  navegarParaCadastroMilitar() {
+    this.router.navigate(['/cadastro-militar']);
   }
 }

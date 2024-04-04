@@ -1,10 +1,17 @@
-<div class="container mt-4">
-  <form [formGroup]="emprestimoForm" (ngSubmit)="salvarEmprestimo()">
+<div class="container mt-2">
+<form [formGroup]="emprestimoForm" (ngSubmit)="salvarEmprestimo()">
+    <div *ngIf="militarNaoEncontrado" class="alert alert-danger">
+      Militar não encontrado.
+      <a href="/cadastro-militar">Clique aqui para cadastrar.</a>
+    </div>
     <div class="mb-3">
       <label for="nf" class="form-label">NF Militar</label>
-      <input type="text" id="nf" formControlName="nf" class="form-control" (keyup.enter)="validarMilitar()">
-      <!-- Botão para validar o militar, chamando o método validarMilitar -->
-      <button class="btn btn-primary mt-2" type="button" (click)="validarMilitar()">Validar</button>
+      <div class="input-group">
+        <input type="text" id="nf" formControlName="nf" class="form-control"
+               (input)="filtrarSomenteNumeros($event)"
+               (keyup.enter)="validarMilitar()" placeholder="Digite o NF">
+        <button class="btn btn-primary" type="button" (click)="validarMilitar()">Validar</button>
+      </div>
     </div>
 
     <!-- Campos preenchidos automaticamente após a validação do militar -->
@@ -36,15 +43,17 @@
     <!-- Seleção de material e status -->
     <div class="mb-3">
       <label for="descricaoMaterial">Material</label>
-      <select class="form-select" id="descricaoMaterial" formControlName="materialId" (change)="atualizarDescricaoMaterial($event)">
+      <select class="form-select" id="descricaoMaterial" formControlName="materialId"
+              (change)="atualizarDescricaoMaterial($event)">
         <option value="">Selecione...</option>
-        <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricaoMaterial }}</option>
+        <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricaoMaterial }}
+        </option>
       </select>
     </div>
     <div class="mb-3">
       <label for="status" class="form-label">Status</label>
       <select class="form-select" id="status" formControlName="status">
-<!--        <option value="Disponível">Disponível</option>-->
+        <!--        <option value="Disponível">Disponível</option>-->
         <option value="Cautelado">Cautelado</option>
         <option value="Emprestado">Emprestado</option>
         <option value="P4">Com a P/4</option>

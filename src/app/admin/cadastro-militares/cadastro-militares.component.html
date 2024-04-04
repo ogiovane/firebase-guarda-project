@@ -1,5 +1,5 @@
-<div class="container mt-5">
-  <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
+<div class="container mt-2">
+<form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
 
     <!-- Posto/Graduação -->
     <div class="mb-3">
@@ -13,18 +13,16 @@
     <!-- Nome Completo -->
     <div class="mb-3">
       <label for="nome" class="form-label">Nome Completo</label>
-      <input type="text" class="form-control" id="nome" formControlName="nome">
-      <div *ngIf="cadastroForm.get('nome').errors && cadastroForm.get('nome').touched"
-           class="text-danger">
+      <input type="text" class="form-control" id="nome" formControlName="nome" (input)="onNomeChange($event)">
+      <div *ngIf="cadastroForm.get('nome').errors && cadastroForm.get('nome').touched" class="text-danger">
         <div *ngIf="cadastroForm.get('nome').errors['required']">Nome completo é obrigatório.</div>
-        <div *ngIf="cadastroForm.get('nome').errors['pattern']">Apenas letras são permitidas.</div>
+        <div *ngIf="cadastroForm.get('nome').errors['pattern']">Apenas letras e espaços são permitidos.</div>
       </div>
     </div>
 
-    <!-- RG -->
     <div class="mb-3">
       <label for="rg" class="form-label">RG</label>
-      <input type="text" class="form-control" id="rg" formControlName="rg">
+      <input type="text" class="form-control" id="rg" formControlName="rg" (input)="onRGChange($event)">
       <div *ngIf="cadastroForm.get('rg').errors && cadastroForm.get('rg').touched" class="text-danger">
         <div *ngIf="cadastroForm.get('rg').errors['required']">RG é obrigatório.</div>
         <div *ngIf="cadastroForm.get('rg').errors['maxlength']">RG deve ter no máximo 6 números.</div>
@@ -32,10 +30,10 @@
       </div>
     </div>
 
-    <!-- NF -->
+    <!-- Campo NF -->
     <div class="mb-3">
       <label for="nf" class="form-label">NF</label>
-      <input type="text" class="form-control" id="nf" formControlName="nf">
+      <input type="text" class="form-control" id="nf" formControlName="nf" (input)="onNFChange($event)">
       <div *ngIf="cadastroForm.get('nf').errors && cadastroForm.get('nf').touched" class="text-danger">
         <div *ngIf="cadastroForm.get('nf').errors['required']">NF é obrigatório.</div>
         <div *ngIf="cadastroForm.get('nf').errors['maxlength']">NF deve ter no máximo 10 números.</div>
@@ -46,11 +44,9 @@
     <!-- Celular -->
     <div class="mb-3">
       <label for="celular" class="form-label">Celular</label>
-      <input type="text" class="form-control" id="celular" formControlName="celular">
+      <input type="text" class="form-control" id="celular" formControlName="celular" (input)="formatarCelular($event)">
       <div *ngIf="cadastroForm.get('celular').errors && cadastroForm.get('celular').touched" class="text-danger">
         <div *ngIf="cadastroForm.get('celular').errors['required']">Celular é obrigatório.</div>
-        <div *ngIf="cadastroForm.get('celular').errors['maxlength']">Celular deve ter no máximo 11 números.</div>
-        <div *ngIf="cadastroForm.get('celular').errors['pattern']">Somente números são permitidos.</div>
       </div>
     </div>
 
@@ -78,7 +74,7 @@
     <!-- Botões -->
     <div class="text-center">
       <button type="submit" class="btn btn-success me-2" [disabled]="!cadastroForm.valid">Salvar</button>
-      <button type="button" class="btn btn-danger" (click)="cadastroForm.reset()">Cancelar</button>
+      <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
     </div>
   </form>
 </div>

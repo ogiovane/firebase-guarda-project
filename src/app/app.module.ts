@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule, provideOAuthClient } from 'angular-oauth2-oidc';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+
 
 
 @NgModule({
@@ -51,8 +53,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
         }
       }
     ),
-    AngularFireDatabaseModule, MatDialogModule, NgxPaginationModule],
-  providers: [provideOAuthClient()],
+    AngularFireDatabaseModule, MatDialogModule, NgxPaginationModule, ],
+  providers: [provideOAuthClient(),provideCharts(withDefaultRegisterables())],
 })
 export class AppModule {
 }
