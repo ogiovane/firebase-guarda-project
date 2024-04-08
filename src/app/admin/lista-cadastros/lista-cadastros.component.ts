@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Cadastro } from '../../interfaces/cadastro';
 import { CommonModule } from '@angular/common';
 import { FilterMilitarPipe } from '../../pipes/filter-militar.pipe';
+import { MensagemService } from '../../services/message.service';
 
 @Component({
   selector: 'app-lista-cadastros',
@@ -19,11 +20,15 @@ export class CadastrosListComponent implements OnInit {
   currentPage: number = 0;
   itemsPerPage: number = 20;
   searchText: string = '';
+  mensagem: string;
 
-  constructor(private cadastrosService: CadastrosService, private router: Router) {}
+  constructor(private cadastrosService: CadastrosService, private router: Router, private mensagemService: MensagemService) {}
 
   ngOnInit(): void {
     this.loadCadastros();
+    this.mensagemService.mensagemAtual.subscribe(msg => {
+      this.mensagem = msg;
+    });
   }
 
   loadCadastros(): void {

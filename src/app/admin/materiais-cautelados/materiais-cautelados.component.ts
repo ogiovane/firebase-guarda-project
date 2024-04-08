@@ -29,25 +29,6 @@ export class MateriaisCauteladosComponent implements OnInit {
   materiaisBaixados: any[] = [];
   totaisMateriais: Record<string, TotaisMaterial> = {};
 
-  public pieChartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        position: 'right',
-      }
-    }
-  };
-  public pieChartType: ChartType = 'pie';
-  public pieChartData: ChartData<'pie'> = {
-    labels: ['Disponíveis', 'Cautelados', 'Baixados'], // Labels para cada segmento
-    datasets: [{
-      data: [], // Dados serão inseridos aqui
-      backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
-      borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
-      borderWidth: 1
-    }]
-  };
 
   constructor(private historicoService: HistoricoCautelasService, private router: Router, private materiaisService: MateriaisService) {
     // this.initializeChartData();
@@ -69,29 +50,6 @@ export class MateriaisCauteladosComponent implements OnInit {
       // this.initializeChartData(); // Chame aqui após ter os dados
     });
   }
-
-  // initializeChartData() {
-  //   // Supondo que 'Cartões' é a categoria que queremos exibir
-  //   if (this.totaisMateriais['Cartão']) {
-  //     const dadosCartoes = this.totaisMateriais['Cartão'];
-  //
-  //     this.pieChartData.labels = ['Disponíveis', 'Cautelados', 'Baixados'];
-  //     this.pieChartData.datasets[0].data = [
-  //       dadosCartoes.disponiveis,
-  //       dadosCartoes.cautelados,
-  //       dadosCartoes.baixados,
-  //       dadosCartoes.total,
-  //     ];
-  //   }
-  //
-  //   // Atualização necessária para refletir mudanças no gráfico
-  //   this.pieChartData = {
-  //     ...this.pieChartData,
-  //     labels: this.pieChartData.labels,
-  //     datasets: this.pieChartData.datasets
-  //   };
-  // }
-
 
   devolverMaterial(material: any): void {
     this.router.navigate(['/devolver-material'], { state: { material } });

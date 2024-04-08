@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CommonModule } from '@angular/common';
 import { CadastrosService } from '../../services/cadastros.service';
 import { MateriaisService } from '../../services/materiais.service';
+import { MensagemService } from '../../services/message.service';
 
 @Component({
   selector: 'app-editar-material',
@@ -20,7 +21,8 @@ export class EditarMaterialComponent implements OnInit {
   material: any = { status: '', motivoBaixa: '' };
   materialId: string;
 
-  constructor(private firestore: AngularFirestore, private route: ActivatedRoute, private router: Router, private materialService: MateriaisService) {}
+  constructor(private firestore: AngularFirestore, private route: ActivatedRoute, private router: Router, private materialService: MateriaisService, private mensagemService: MensagemService) {
+  }
 
   ngOnInit(): void {
     this.materialId = this.route.snapshot.params['id'];
@@ -70,14 +72,15 @@ export class EditarMaterialComponent implements OnInit {
         } else {
           // Prossiga com a atualização
           this.firestore.collection('materiais').doc(this.materialId).update(updateData).then(() => {
-            this.router.navigate(['/listar-materiais']); // Ajuste a rota conforme necessário
+            this.mensagemService.mudarMensagem('Material editado com sucesso!'); // Envie a mensagem de sucesso
+            this.router.navigate(['/listar-materiais']);
           }).catch(error => {
             console.error("Erro ao atualizar material:", error);
           });
         }
       })
       .catch(error => {
-        console.error("Erro ao verificar duplicidade:", error);
+        console.error('Erro ao verificar duplicidade:', error);
       });
   }
 

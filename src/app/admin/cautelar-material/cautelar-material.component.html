@@ -46,19 +46,16 @@
       <select class="form-select" id="descricaoMaterial" formControlName="materialId"
               (change)="atualizarDescricaoMaterial($event)">
         <option value="">Selecione...</option>
-        <option *ngFor="let material of materiaisDisponiveis" [value]="material.id">{{ material.descricaoMaterial }}
+        <option *ngFor="let material of materiaisDisponiveis " [value]="material.id">{{ material.descricaoMaterial }}
         </option>
       </select>
     </div>
-    <div class="mb-3">
-      <label for="status" class="form-label">Status</label>
-      <select class="form-select" id="status" formControlName="status">
-        <!--        <option value="Disponível">Disponível</option>-->
-        <option value="Cautelado">Cautelado</option>
-        <option value="Emprestado">Emprestado</option>
-        <option value="P4">Com a P/4</option>
-      </select>
-    </div>
+
+  <div class="mb-3">
+    <label for="observacao" class="form-label">Observação</label>
+    <input type="text" class="form-control" id="observacao" formControlName="observacao" placeholder="Preencha caso necessário">
+  </div>
+
 
     <!-- Botões para salvar e cancelar -->
     <div class="text-center">

@@ -2,6 +2,10 @@
   <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Filtrar por nome do militar">
 </div>
 
+<div *ngIf="mensagem" class="alert alert-info">
+  {{ mensagem }}
+</div>
+
 <div class="table-responsive">
 <table class="table table-striped table-hover">
     <thead>

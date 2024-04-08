@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { SortPipe } from '../../pipes/sort.pipe';
+import { MensagemService } from '../../services/message.service';
 
 interface Material {
   id: string;
@@ -36,8 +37,11 @@ export class ListaMateriaisComponent implements OnInit {
   filtroStatus: string = 'todos';
   materiaisFiltrados: Material[] = [];
   exibirMensagemSemResultados: boolean = false;
+  mensagemSucesso: string = '';
 
-  constructor(private firestore: AngularFirestore, private router: Router, private dialog: MatDialog) {}
+
+
+  constructor(private firestore: AngularFirestore, private router: Router, private dialog: MatDialog, private mensagemService: MensagemService) {}
 
   ngOnInit(): void {
     this.materiais$ = this.firestore.collection<Material>('materiais').valueChanges({ idField: 'id' });
@@ -59,6 +63,16 @@ export class ListaMateriaisComponent implements OnInit {
         this.materiaisFiltrados = materiais;
         this.aplicarFiltro(); // Aplica o filtro inicialmente, se necessário
       });
+
+    this.mensagemService.mensagemAtual.subscribe(mensagem => {
+      if (mensagem) {
+        this.mensagemSucesso = mensagem;
+        setTimeout(() => {
+          this.mensagemSucesso = '';
+          this.mensagemService.limparMensagem(); // Limpa a mensagem no serviço
+        }, 5000); // Limpa a mensagem após 3 segundos
+      }
+    });
   }
 
 

@@ -5,6 +5,8 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
 import { AngularFireModule } from '@angular/fire/compat';
 import { Router } from '@angular/router';
 import { CadastrosService } from '../../services/cadastros.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MensagemService } from '../../services/message.service';
 
 
 @Component({
@@ -23,25 +25,32 @@ import { CadastrosService } from '../../services/cadastros.service';
 export class CadastroMilitaresComponent implements OnInit {
   postos: string[];
   lotacoes: string[];
-  errorMessage: string = '';
+  errorMessage: string;
+  mensagem: string;
+  sucesso: boolean;
+  cadastroForm: FormGroup;
 
-
-  cadastroForm = new FormGroup({
-    posto: new FormControl('', Validators.required),
-    nome: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]),
-    rg: new FormControl('', [Validators.required, Validators.maxLength(6), Validators.pattern(/^\d+$/)]),
-    nf: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern(/^\d+$/)]),
-    celular: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.email]),
-    lotacao: new FormControl('', Validators.required)
-  });
-
-  constructor(private db: AngularFirestore, private router: Router, private cadastrosService: CadastrosService) {
+  constructor(private db: AngularFirestore, private router: Router, private cadastrosService: CadastrosService, private mensagemService: MensagemService
+  ) {
   }
 
   ngOnInit(): void {
     this.postos = this.cadastrosService.postos;
     this.lotacoes = this.cadastrosService.lotacoes;
+    this.inicializarForm();
+  }
+
+
+  inicializarForm(): void {
+    this.cadastroForm = new FormGroup({
+      posto: new FormControl('', Validators.required),
+      nome: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]),
+      rg: new FormControl('', [Validators.required, Validators.maxLength(6), Validators.pattern(/^\d+$/)]),
+      nf: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern(/^\d+$/)]),
+      celular: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.email),
+      lotacao: new FormControl('', Validators.required)
+    });
   }
 
   onNomeChange(event: any) {
@@ -60,21 +69,27 @@ export class CadastroMilitaresComponent implements OnInit {
   }
 
   async onSubmit() {
-    const id = this.cadastroForm.get('nf').value;
+    if (this.cadastroForm.invalid) {
+      this.mensagemService.mudarMensagem('Por favor, preencha todos os campos corretamente.');
+      return;
+    }
 
-    try {
-      const docRef = this.db.collection('cadastros').doc(id);
-      await docRef.set(this.cadastroForm.value);
-      // Sucesso!
-      alert('Cadastro salvo com sucesso!'); // Substitua por sua lógica de notificação se necessário
-      this.cadastroForm.reset();
-      this.errorMessage = '';
-      this.router.navigate(['/lista-cadastros']); // Redireciona para '/lista-cadastros'
-    } catch (error) {
-      // Erro ao salvar dados
-      console.error(error);
-      this.errorMessage = 'Erro ao salvar dados';
-      alert('Erro ao salvar dados.'); // Opcional: Substitua por sua lógica de notificação
+    const nf = this.cadastroForm.get('nf').value;
+    const docs = await this.db.collection('cadastros', ref => ref.where('nf', '==', nf)).get().toPromise();
+
+    if (docs.empty) {
+      this.db.collection('cadastros').doc(nf).set(this.cadastroForm.value)
+        .then(() => {
+          this.mensagemService.mudarMensagem('Cadastro salvo com sucesso!');
+          this.router.navigate(['/lista-cadastros']);
+        })
+        .catch(error => {
+          console.error('Erro ao salvar o cadastro:', error);
+          this.mensagemService.mudarMensagem('Erro ao salvar dados.');
+        });
+    } else {
+      this.mensagemService.mudarMensagem('Um cadastro com este NF já existe.');
+      this.router.navigate(['/lista-cadastros']);
     }
   }
 

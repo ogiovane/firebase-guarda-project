@@ -1,8 +1,14 @@
 <div class="container mt-2">
-<form [formGroup]="cadastroForm" (ngSubmit)="salvarDados()">
+  <form [formGroup]="cadastroForm" (ngSubmit)="salvarDados()">
+    <!-- Mensagem de Erro -->
+    <div *ngIf="mensagemErro" class="alert alert-danger">
+      {{ mensagemErro }}
+    </div>
+
     <div class="mb-3">
       <label for="tipo" class="form-label">Tipo</label>
       <select class="form-select" id="tipo" formControlName="tipo">
+        <option value="">Selecione...</option>
         <option value="Chave">Chave</option>
         <option value="Cartão">Cartão</option>
         <option value="Documento">Documento</option>
@@ -12,18 +18,13 @@
 
     <div class="mb-3">
       <label for="descricaoMaterial" class="form-label">Descrição</label>
-      <input type="text" class="form-control" id="descricaoMaterial" formControlName="descricaoMaterial">
+      <input type="text" class="form-control" id="descricaoMaterial" formControlName="descricaoMaterial" placeholder="Ex.: RP5999"
+             (input)="formatarDescricao($event)">
     </div>
 
     <div class="mb-3">
-      <label for="status" class="form-label">Status</label>
-      <select class="form-select" id="status" formControlName="status">
-        <option value="Baixado">Baixado</option>
-        <option value="Cautelado">Cautelado</option>
-        <option value="P4">Com a P/4</option>
-        <option value="Disponível">Disponível</option>
-        <option value="Emprestado">Emprestado</option>
-      </select>
+      <label for="observacao" class="form-label">Observação</label>
+      <input type="text" class="form-control" id="observacao" formControlName="observacao" placeholder="Digite observação caso necessário">
     </div>
 
     <div class="text-center">

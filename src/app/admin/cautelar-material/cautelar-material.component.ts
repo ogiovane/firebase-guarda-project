@@ -47,8 +47,9 @@ export class CautelarMaterialComponent implements OnInit {
       posto: new FormControl({ value: '', disabled: true }, Validators.required),
       tipo: new FormControl('', Validators.required),
       materialId: new FormControl('', Validators.required),
+      observacao: new FormControl(''),
       descricaoMaterial: new FormControl('', Validators.required), // Campo adicionado para descrição
-      status: new FormControl('', Validators.required)
+      status: new FormControl('Cautelado')
     });
 
     // Se os dados do material forem passados, preencha o formulário com esses dados
@@ -59,7 +60,7 @@ export class CautelarMaterialComponent implements OnInit {
         tipo: material.tipo, // Ajuste conforme o nome do campo no seu formulário
         descricaoMaterial: material.descricaoMaterial, // Ajuste conforme o nome do campo no seu formulário
         materialId: material.id,
-        status: 'Disponível' // Isso é apenas um exemplo, ajuste conforme necessário
+        status: 'Cautelado' // Isso é apenas um exemplo, ajuste conforme necessário
       });
     }
   }
@@ -190,7 +191,8 @@ export class CautelarMaterialComponent implements OnInit {
   // }
 
   cancelarEmprestimo(): void {
-    this.emprestimoForm.reset();
+    this.router.navigate(['/dashboard/default']); // Usuário logado, redirecionar para dashboard
+    // this.emprestimoForm.reset();
   }
 
   voltar(): void {
@@ -200,4 +202,6 @@ export class CautelarMaterialComponent implements OnInit {
   navegarParaCadastroMilitar() {
     this.router.navigate(['/cadastro-militar']);
   }
+
+
 }

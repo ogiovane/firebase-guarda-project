@@ -26,6 +26,8 @@ import { OAuthModule, provideOAuthClient } from 'angular-oauth2-oidc';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { OrderModule } from 'ngx-order-pipe';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -53,7 +55,7 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
         }
       }
     ),
-    AngularFireDatabaseModule, MatDialogModule, NgxPaginationModule, ],
+    AngularFireDatabaseModule, MatDialogModule, NgxPaginationModule, MatSnackBarModule ],
   providers: [provideOAuthClient(),provideCharts(withDefaultRegisterables())],
 })
 export class AppModule {

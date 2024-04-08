@@ -1,24 +1,24 @@
 <!-- src/app/materiais-cautelados/materiais-cautelados.component.html -->
 <div class="container mt-3">
-  <h3>Materiais Cautelados</h3>
+  <h3>Materiais Cautela Diária</h3>
   <table class="table table-striped table-hover">
     <thead>
     <tr>
       <th>Data/Hora Cautela</th>
-      <th>Militar</th>
-      <th>Tipo</th>
       <th>Descrição</th>
+      <th>Militar</th>
       <th>Status</th>
+      <th>Observação</th>
       <th>Ação</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let material of materiais">
       <td>{{ material.dataHoraCautela.toDate() | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ material.tipo }} {{ material.descricaoMaterial }}</td>
       <td>{{ material.posto }} {{ material.nome }}</td>
-      <td>{{ material.tipo }}</td>
-      <td>{{ material.descricaoMaterial }}</td>
       <td>{{ material.status }}</td>
+      <td>{{ material.observacao }}</td>
       <td>
         <button (click)="devolverMaterial(material)" class="btn btn-danger">Devolver</button>
       </td>
@@ -33,14 +33,14 @@
 </div>
 <hr>
 <div class="container mt-3">
-  <h3>Materiais Baixados</h3>
+  <h3>Materiais Indisponíveis</h3>
   <table class="table table-striped table-hover">
     <thead>
     <tr>
       <th>Tipo</th>
       <th>Descrição</th>
       <th>Status</th>
-      <th>Motivo Baixa</th>
+      <th>Observação</th>
       <th>Ação</th>
     </tr>
     </thead>
@@ -49,7 +49,7 @@
       <td>{{ material.tipo }}</td>
       <td>{{ material.descricaoMaterial }}</td>
       <td>{{ material.status }}</td>
-      <td>{{ material.motivoBaixa }}</td>
+      <td>{{ material.motivoBaixa }}{{ material.integranteP4 }}{{ material.observacao }}</td>
       <td>
         <button (click)="receberMaterial(material)" class="btn btn-danger">Receber</button>
       </td>
@@ -71,19 +71,19 @@
     <thead>
     <tr>
       <th>Tipo</th>
-      <th>Disponíveis</th>
-      <th>Cautelados</th>
-      <th>Baixados</th>
       <th>Total</th>
+      <th>Baixados</th>
+      <th>Cautelados</th>
+      <th>Disponíveis</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let tipo of totaisMateriais | keyvalue">
       <td>{{ tipo.key }}</td>
-      <td>{{ tipo.value.disponiveis }}</td>
-      <td>{{ tipo.value.cautelados }}</td>
-      <td>{{ tipo.value.baixados }}</td>
       <td>{{ tipo.value.total }}</td>
+      <td>{{ tipo.value.baixados }}</td>
+      <td>{{ tipo.value.cautelados }}</td>
+      <td>{{ tipo.value.disponiveis }}</td>
     </tr>
     </tbody>
   </table>

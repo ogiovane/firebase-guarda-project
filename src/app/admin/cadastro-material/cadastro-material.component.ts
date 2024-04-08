@@ -1,52 +1,74 @@
-import { Component, Injectable } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import firebase from 'firebase/compat';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { MensagemService } from '../../services/message.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-material',
+  templateUrl: './cadastro-material.component.html',
+  styleUrls: ['./cadastro-material.component.scss'],
   standalone: true,
   imports: [
-    ReactiveFormsModule
-  ],
-  templateUrl: './cadastro-material.component.html',
-  styleUrl: './cadastro-material.component.scss'
+    ReactiveFormsModule,
+    CommonModule
+  ]
 })
+export class CadastroMaterialComponent implements OnInit {
+  cadastroForm: FormGroup;
+  mensagemErro: string;
 
-export class CadastroMaterialComponent {
-  cadastroForm = new FormGroup({
-    tipo: new FormControl('', Validators.required),
-    descricaoMaterial: new FormControl('', Validators.required),
-    status: new FormControl('', Validators.required)
-  });
+  constructor(
+    private firestore: AngularFirestore,
+    private fb: FormBuilder,
+    private router: Router,
+    private mensagemService: MensagemService
+  ) {}
 
-  constructor(private firestore: AngularFirestore) {
+  ngOnInit(): void {
+    this.cadastroForm = this.fb.group({
+      tipo: ['', Validators.required],
+      descricaoMaterial: ['', Validators.required],
+      observacao: ['']
+    });
   }
 
   salvarDados(): void {
     if (this.cadastroForm.valid) {
-      const { tipo, descricaoMaterial } = this.cadastroForm.value;
-      // Busca na coleção 'materiais' por documentos com os mesmos 'tipo' e 'descricaoMaterial'
+      const material = { ...this.cadastroForm.value, status: 'Disponível' };
+
       this.firestore.collection('materiais', ref => ref
-        .where('tipo', '==', tipo)
-        .where('descricaoMaterial', '==', descricaoMaterial))
+        .where('tipo', '==', material.tipo)
+        .where('descricaoMaterial', '==', material.descricaoMaterial))
         .get()
         .toPromise()
         .then((resultado) => {
           if (resultado.empty) {
-            // Se não houver documentos duplicados, prossegue com a adição do novo documento
-            this.firestore.collection('materiais').add(this.cadastroForm.value)
-              .then(() => alert('Material cadastrado com sucesso!'))
-              .catch((error) => console.error('Erro ao salvar o material:', error));
+            this.firestore.collection('materiais').add(material)
+              .then(() => {
+                this.mensagemService.mudarMensagem('Material cadastrado com sucesso!');
+                this.router.navigate(['/listar-materiais']);
+              })
+              .catch((error) => {
+                console.error('Erro ao salvar o material:', error);
+                this.mensagemErro = 'Erro ao salvar o material. Por favor, tente novamente.';
+              });
           } else {
-            // Se houver documentos duplicados, alerta o usuário
-            alert('Um material com o mesmo tipo e descrição já existe.');
+            this.mensagemErro = 'Um material com o mesmo tipo e descrição já existe.';
           }
         })
-        .catch((error) => console.error('Erro ao verificar duplicidade:', error));
-      this.cadastroForm.reset();
+        .catch((error) => {
+          console.error('Erro ao verificar duplicidade:', error);
+          this.mensagemErro = 'Erro ao verificar a duplicidade do material.';
+        });
     } else {
-      alert('Preencha todos os campos do formulário corretamente.');
+      this.mensagemErro = 'Preencha todos os campos do formulário corretamente.';
     }
+  }
+
+  formatarDescricao(event: any): void {
+    const valor = event.target.value.toUpperCase().replace(/\s/g, '');
+    this.cadastroForm.get('descricaoMaterial').setValue(valor, { emitEvent: false });
   }
 }
