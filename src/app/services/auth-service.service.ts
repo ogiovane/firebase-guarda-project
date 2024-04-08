@@ -84,6 +84,7 @@ export class AuthService {
     // Logout do Firebase
     this.afAuth.signOut().then(() => {
       console.log('Logout do Firebase realizado com sucesso.');
+      this.router.navigate(['/login']);
     }).catch(error => {
       console.error('Erro ao fazer logout do Firebase:', error);
     });

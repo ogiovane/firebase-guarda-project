@@ -90,11 +90,13 @@ export class CautelarMaterialComponent implements OnInit {
   carregarMateriaisPorTipo(): void {
     let tipo = this.emprestimoForm.get('tipo')?.value;
     if (tipo) {
-      this.materiaisDisponiveis$ = this.firestore.collection<Material>('materiais', ref =>
-        ref.where('status', '==', 'Disponível').where('tipo', '==', tipo)
-      ).valueChanges({ idField: 'id' });
+      this.firestore.collection<Material>('materiais', ref =>
+        ref.where('status', '==', 'Disponível').where('tipo', '==', tipo).orderBy('descricaoMaterial', 'asc')
+      ).valueChanges({ idField: 'id' }).subscribe(materiais => {
+        this.materiaisDisponiveis = materiais;
+      });
     } else {
-      this.materiaisDisponiveis$ = new Observable<Material[]>(); // Reset quando nenhum tipo é selecionado
+      this.materiaisDisponiveis = []; // Reset quando nenhum tipo é selecionado
     }
   }
 

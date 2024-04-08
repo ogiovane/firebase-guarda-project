@@ -6,15 +6,6 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth-service.service';
 import { CadastrosService } from '../../services/cadastros.service';
 
-interface Historico {
-  dataHoraCautela: Date;
-  nome: string;
-  tipo: string;
-  descricaoMaterial: string;
-  dataHoraDevolucao?: Date;
-  responsavelDevolucao?: string;
-}
-
 @Component({
   selector: 'app-relatorio',
   templateUrl: './relatorio.component.html',

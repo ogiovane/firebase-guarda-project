@@ -5,4 +5,6 @@ export interface Historico {
   nome: string;
   dataHoraDevolucao?: any; // Firestore Timestamp
   responsavelDevolucao?: string;
+  responsavelCautela?: string;
+  cupomAbastecimento?: string
 }
