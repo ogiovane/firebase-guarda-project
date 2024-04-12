@@ -42,7 +42,7 @@ export class CadastrosEditComponent implements OnInit {
   updateCadastro(): void {
     this.cadastrosService.updateCadastro(this.cadastroId, this.cadastro).then(() => {
       // Redireciona para a lista de cadastros após a atualização bem-sucedida
-      this.router.navigate(['/lista-cadastros']);
+      this.router.navigate(['/admin/lista-cadastros']);
     }).catch(error => {
       console.error('Erro ao atualizar o cadastro:', error);
     });
@@ -53,7 +53,7 @@ export class CadastrosEditComponent implements OnInit {
   }
 
   cancelarEdicao() {
-    this.router.navigate(['/lista-cadastros']);
+    this.router.navigate(['/admin/lista-cadastros']);
   }
 
   excluirMilitar() {
@@ -61,7 +61,7 @@ export class CadastrosEditComponent implements OnInit {
     if (confirmacao) {
       this.cadastrosService.deleteCadastro(this.cadastroId).then(() => {
         alert('Cadastro excluído com sucesso.');
-        this.router.navigate(['/lista-cadastros']);
+        this.router.navigate(['/admin/lista-cadastros']);
       }).catch(error => {
         console.error('Erro ao excluir cadastro:', error);
         alert('Ocorreu um erro ao tentar excluir o cadastro.');
@@ -70,3 +70,5 @@ export class CadastrosEditComponent implements OnInit {
   }
 }
 
+export class EditarCadastroComponent {
+}

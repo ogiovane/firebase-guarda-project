@@ -73,7 +73,7 @@ export class EditarMaterialComponent implements OnInit {
           // Prossiga com a atualização
           this.firestore.collection('materiais').doc(this.materialId).update(updateData).then(() => {
             this.mensagemService.mudarMensagem('Material editado com sucesso!'); // Envie a mensagem de sucesso
-            this.router.navigate(['/listar-materiais']);
+            this.router.navigate(['/admin/listar-materiais']);
           }).catch(error => {
             console.error("Erro ao atualizar material:", error);
           });
@@ -90,7 +90,7 @@ export class EditarMaterialComponent implements OnInit {
   }
 
   cancelarEdicao(): void {
-    this.router.navigate(['/listar-materiais']);
+    this.router.navigate(['/admin/listar-materiais']);
   }
 
   excluirMaterial(): void {
@@ -99,7 +99,7 @@ export class EditarMaterialComponent implements OnInit {
       // Aqui, substitua 'this.idDoMaterial' pelo mecanismo correto que você tem para acessar o ID do material
       this.materialService.deleteMaterial(this.materialId).then(() => {
         alert('Material excluído com sucesso.');
-        this.router.navigate(['/listar-materiais']);
+        this.router.navigate(['/admin/listar-materiais']);
       }).catch(error => {
         console.error('Erro ao excluir material:', error);
         alert('Ocorreu um erro ao tentar excluir o material.');

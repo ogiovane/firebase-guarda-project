@@ -13,7 +13,7 @@ export class GuestGuard implements CanActivate {
   canActivate() {
     return this.authService.isLoggedIn().pipe(map(isLoggedIn => {
       if (isLoggedIn) {
-        this.router.navigate(['/dashboard/default']); // Usuário logado, redirecionar para dashboard
+        this.router.navigate(['/admin/dashboard']); // Usuário logado, redirecionar para dashboard
         return false;
       }
       return true; // Usuário não logado, acesso permitido à rota de login

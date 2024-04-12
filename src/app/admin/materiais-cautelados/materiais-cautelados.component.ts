@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HistoricoCautelasService } from '../../services/historico-cautelas.service';
 import { Router } from '@angular/router';
 import { MateriaisService } from '../../services/materiais.service';
-import { ChartConfiguration, ChartData, ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { CommonModule, KeyValuePipe } from '@angular/common';
-import { BaseChartDirective } from 'ng2-charts';
 
 interface TotaisMaterial {
   disponiveis: number;
@@ -20,7 +18,6 @@ interface TotaisMaterial {
   imports: [
     KeyValuePipe,
     CommonModule,
-    BaseChartDirective
   ],
   styleUrls: ['./materiais-cautelados.component.scss']
 })
@@ -52,10 +49,10 @@ export class MateriaisCauteladosComponent implements OnInit {
   }
 
   devolverMaterial(material: any): void {
-    this.router.navigate(['/devolver-material'], { state: { material } });
+    this.router.navigate(['/admin/devolver-material'], { state: { material } });
   }
 
   receberMaterial(material: any) {
-    this.router.navigate(['/receber-material'], { state: { material } });
+    this.router.navigate(['/admin/receber-material'], { state: { material } });
   }
 }

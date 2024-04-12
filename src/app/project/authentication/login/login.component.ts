@@ -27,14 +27,14 @@ export class LoginComponent  {
       .then((userCredential) => {
         this.user = userCredential.user;
         this.isLoggedIn = true; // Atualiza o flag após a autenticação bem sucedida!
-        this.router.navigate(['/dashboard/default']); // Redirecionar após o login
+        this.router.navigate(['/admin/dashboard']); // Redirecionar após o login
       })
       .catch(error => console.error(error));
   }
 
   loginWithEmailPassword() {
     this.authService.loginWithEmailPassword(this.email, this.password).then(() => {
-      this.router.navigate(['/dashboard/default']); // Navega para o dashboard após o login bem-sucedido
+      this.router.navigate(['/admin/dashboard']); // Navega para o dashboard após o login bem-sucedido
     }).catch(error => {
       console.error('Erro ao fazer login', error);
     });

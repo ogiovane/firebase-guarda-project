@@ -67,13 +67,13 @@ export class ReceberMaterialComponent implements OnInit {
       });
 
     Promise.all([salvarHistorico, atualizarMateriais]).then(() => {
-      this.router.navigate(['/materiais-cautelados']);
+      this.router.navigate(['/admin/materiais-cautelados']);
     }).catch(error => {
       console.error('Erro ao atualizar documentos:', error);
     });
   }
 
   cancelar(): void {
-    this.router.navigate(['/materiais-cautelados']);
+    this.router.navigate(['/admin/materiais-cautelados']);
   }
 }

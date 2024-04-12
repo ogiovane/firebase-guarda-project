@@ -78,12 +78,12 @@ export class ListaMateriaisComponent implements OnInit {
 
   editarMaterial(id: string): void {
     // Supondo que a rota para editar material seja '/editar-material/{id}'
-    this.router.navigate(['/editar-material', id]);
+    this.router.navigate(['/admin/editar-material', id]);
   }
 
   baixarMaterial(id: string): void {
     // Supondo que a rota para baixar material seja '/baixar-material/{id}'
-    this.router.navigate(['/baixar-material', id]);
+    this.router.navigate(['/admin/baixar-material', id]);
   }
 
   aplicarFiltro(): void {
@@ -112,11 +112,11 @@ export class ListaMateriaisComponent implements OnInit {
   }
 
   redirecionarParaCautelar(): void {
-    this.router.navigate(['/cautelar-material']);
+    this.router.navigate(['/admin/cautelar-material']);
   }
 
   devolverMaterial(material: Material): void {
-    this.router.navigate(['/devolver-material'], { state: { material } });
+    this.router.navigate(['/admin/devolver-material'], { state: { material } });
   }
 
   receberMaterial(id: string): void {

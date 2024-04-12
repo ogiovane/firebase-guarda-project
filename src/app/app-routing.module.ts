@@ -12,17 +12,17 @@ import { EditarMaterialComponent } from './admin/editar-material/editar-material
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        redirectTo: 'dashboard/default',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       },
       {
-        path: 'dashboard/default',
+        path: 'dashboard',
         loadComponent: () => import('./admin/materiais-cautelados/materiais-cautelados.component').then(m => m.MateriaisCauteladosComponent)
       },
       {
@@ -94,6 +94,11 @@ const routes: Routes = [
         loadComponent: () => import('./demo/other/sample-page/sample-page.component').then(m => m.SamplePageComponent)
       }
     ]
+  },
+  {
+    path: 'reset-password',
+    loadComponent: () => import('./public/authentication/reset-password/reset-password.component').then(m => m.ResetPasswordComponent),
+    canActivate: [GuestGuard],
   },
   {
     path: '',

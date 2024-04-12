@@ -96,6 +96,6 @@ export class DevolucaoMaterialComponent implements OnInit {
 
 
   cancelar(): void {
-    this.router.navigate(['/listar-materiais']);
+    this.router.navigate(['/admin/listar-materiais']);
   }
 }

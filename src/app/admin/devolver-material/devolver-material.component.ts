@@ -16,6 +16,8 @@ export class DevolverMaterialComponent implements OnInit {
   material: any;
   devolucaoForm: FormGroup;
   userData: any;
+  currentUser: any;
+  isUserDataLoaded: boolean = false; // Adicione um controle de estado
 
   constructor(
     private fb: FormBuilder,
@@ -43,6 +45,13 @@ export class DevolverMaterialComponent implements OnInit {
     this.authService.getUserData().then(data => {
       this.userData = data;
     });
+
+    this.authService.getCurrentUserDetails().subscribe(user => {
+      if (user.length > 0) {
+        this.currentUser = user[0]; // Assumindo que o array tem os dados corretos
+        this.isUserDataLoaded = true;
+      }
+    });
   }
 
   confirmarDevolucao(): void {
@@ -50,7 +59,8 @@ export class DevolverMaterialComponent implements OnInit {
     const atualizacaoHistorico = {
       status: 'Disponível',
       dataHoraDevolucao: dataDevolucao,
-      responsavelDevolucao: this.userData.name || 'Nome não disponível', // Adiciona o nome do responsável pela devolução
+      responsavelDevolucao: `${this.currentUser.posto} ${this.currentUser.nomeGuerra}` || 'Nome não disponível', // Adiciona o nome do responsável pela devolução
+      emailResponsavelDevolucao: `${this.currentUser.email}` || 'Email não disponível', // Adiciona o nome do responsável pela devolução
       ...(this.material.posto && { posto: this.material.posto }), // Inclua apenas se definido
       ...(this.material.nome && { nome: this.material.nome }), // Inclua apenas se definido
       ...(this.devolucaoForm.value.necessitaAbastecimento === 'sim' && { cupomAbastecimento: this.devolucaoForm.value.cupomAbastecimento })
@@ -70,7 +80,7 @@ export class DevolverMaterialComponent implements OnInit {
       });
 
     Promise.all([atualizarHistorico, atualizarMateriais]).then(() => {
-      this.router.navigate(['/materiais-cautelados']);
+      this.router.navigate(['/admin/materiais-cautelados']);
     }).catch(error => {
       console.error("Erro ao atualizar documentos:", error);
     });
@@ -90,6 +100,6 @@ export class DevolverMaterialComponent implements OnInit {
 
 
   cancelar(): void {
-    this.router.navigate(['/materiais-cautelados']);
+    this.router.navigate(['/admin/materiais-cautelados']);
   }
 }

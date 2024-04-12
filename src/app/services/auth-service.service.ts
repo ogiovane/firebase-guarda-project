@@ -1,11 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
-import { combineLatest, Observable, of } from 'rxjs';
+import { combineLatest, Observable, of, switchMap } from 'rxjs';
 import { User } from 'firebase/auth';
 import { Router } from '@angular/router';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MensagemService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,10 @@ export class AuthService {
   private oAuthService = inject(OAuthService);
   private router = inject(Router);
   private afAuth = inject(AngularFireAuth);
+  private firestore = inject(AngularFirestore);
 
-  constructor() {
+  constructor(private mensagemService: MensagemService) {
+
     const authConfig: AuthConfig = {
       // Suas outras configurações de AuthConfig aqui...
     };
@@ -52,12 +56,35 @@ export class AuthService {
     return user ? JSON.parse(user) : null;
   }
 
-  loginWithGoogle() {
-    return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  private ERROS_FIREBASE = {
+    'auth/invalid-email': 'O endereço de e-mail está mal formatado.',
+    'auth/user-disabled': 'Esta conta de usuário foi desativada pelo administrador.',
+    'auth/user-not-found': 'Não existe conta de usuário correspondente a este identificador. O usuário pode ter sido excluído.',
+    'auth/wrong-password': 'A senha é inválida ou o usuário não tem uma senha.',
+    'auth/invalid-credential': 'A credencial/senha fornecida está incorreta ou não autorizada.',
+    'auth/admin-restricted-operation': 'Acesso somente a usuários previamente autorizados.'
+    // Adicione mais mapeamentos conforme necessário
+  };
+
+  // Função de tradução
+  private traduzirErroFirebase(codigoErro: string): string {
+    return this.ERROS_FIREBASE[codigoErro] || 'Ocorreu um erro desconhecido. Tente novamente mais tarde.';
+  }
+
+  loginWithGoogle(): Promise<any> {
+    return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((result) => {
+        this.router.navigate(['/admin/dashboard']);
+      })
+      .catch(error => {
+        const mensagemErro = this.traduzirErroFirebase(error.code);
+        this.mensagemService.mudarMensagem(mensagemErro); // Enviando mensagem de erro em português
+        console.error('Erro ao fazer login com Google: ', mensagemErro);
+      });
   }
 
   // Método para registrar um novo usuário com e-mail e senha
-  async registerWithEmailPassword(email: string, password: string): Promise<void> {
+  async registerWithEmailPassword(email: string, password: string): Promise<any> {
     try {
       const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
       console.log(result);
@@ -69,22 +96,24 @@ export class AuthService {
   }
 
   // Método para login com e-mail e senha
-  async loginWithEmailPassword(email: string, password: string): Promise<void> {
-    try {
-      const result = await this.afAuth.signInWithEmailAndPassword(email, password);
-      console.log(result);
-      // Redirecionar para a rota desejada após o login bem-sucedido
-      this.router.navigate(['/admin/dashboard']);
-    } catch (error) {
-      console.error(error);
-    }
+  public loginWithEmailPassword(email: string, password: string): Promise<any> {
+    return this.afAuth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.router.navigate(['/admin/dashboard']);
+      })
+      .catch(error => {
+        const mensagemErro = this.traduzirErroFirebase(error.code);
+        this.mensagemService.mudarMensagem(mensagemErro);
+        console.error('Erro ao fazer login: ', mensagemErro);
+        throw new Error(mensagemErro);
+      });
   }
 
   logout() {
     // Logout do Firebase
     this.afAuth.signOut().then(() => {
       console.log('Logout do Firebase realizado com sucesso.');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/public/login']);
     }).catch(error => {
       console.error('Erro ao fazer logout do Firebase:', error);
     });
@@ -93,12 +122,12 @@ export class AuthService {
     this.oAuthService.logOut();
 
     // Redireciona para a página de login após o logout
-    this.router.navigate(['/login']);
+    this.router.navigate(['/public/login']);
   }
 
   async logoutGoogleAuth(): Promise<void> {
     await this.afAuth.signOut();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/public/login']);
   }
 
 
@@ -132,5 +161,23 @@ export class AuthService {
     return null; // Retornar nulo ou algum valor padrão se nenhum usuário estiver logado
   }
 
+  getUser(): Observable<firebase.User | null> {
+    return this.afAuth.authState; // authState é um Observable de firebase.User
+  }
+
+  getCurrentUserDetails(): Observable<any> {
+    return this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          console.log('Usuário logado:', user.email); // Log do email do usuário
+          return this.firestore.collection('usuarios', ref => ref.where('email', '==', user.email)).valueChanges({ idField: 'id' });
+        } else {
+          console.log('Nenhum usuário logado.');
+          return of(null);
+        }
+      })
+    );
+  }
 }
+
 

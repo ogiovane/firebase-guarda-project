@@ -57,7 +57,7 @@ export class CadastrosListComponent implements OnInit {
   }
 
   editCadastro(id: string): void {
-    this.router.navigate(['/editar-cadastro', id]);
+    this.router.navigate(['/admin/editar-cadastro', id]);
   }
 
   deleteCadastro(id: string): void {

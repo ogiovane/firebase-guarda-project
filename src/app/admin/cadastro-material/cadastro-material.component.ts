@@ -48,7 +48,7 @@ export class CadastroMaterialComponent implements OnInit {
             this.firestore.collection('materiais').add(material)
               .then(() => {
                 this.mensagemService.mudarMensagem('Material cadastrado com sucesso!');
-                this.router.navigate(['/listar-materiais']);
+                this.router.navigate(['/admin/listar-materiais']);
               })
               .catch((error) => {
                 console.error('Erro ao salvar o material:', error);
@@ -70,5 +70,9 @@ export class CadastroMaterialComponent implements OnInit {
   formatarDescricao(event: any): void {
     const valor = event.target.value.toUpperCase().replace(/\s/g, '');
     this.cadastroForm.get('descricaoMaterial').setValue(valor, { emitEvent: false });
+  }
+
+  cancelar() {
+    this.router.navigate(['/admin/listar-materiais']);
   }
 }

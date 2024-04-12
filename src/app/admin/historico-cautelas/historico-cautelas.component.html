@@ -8,6 +8,7 @@
     <tr>
       <th>Data Cautela</th>
       <th>Descrição</th>
+      <th>Utilização</th>
       <th>Militar que cautelou</th>
       <th>Ab.Num.</th>
       <th>Resp. Cautela</th>
@@ -20,6 +21,7 @@
     <tr *ngFor="let item of paginatedHistorico | filterMaterial: searchText">
       <td>{{ item.dataHoraCautela | date: 'dd/MM/yyyy HH:mm' }}</td>
       <td>{{ item.tipo }} {{ item.descricaoMaterial }}</td>
+      <td>{{ item.utilizacao }}</td>
       <td>{{ item.nome }}</td>
       <td>{{ item.cupomAbastecimento || '-'  }}</td>
       <td>{{ item.responsavelCautela }}</td>

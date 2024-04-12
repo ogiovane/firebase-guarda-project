@@ -15,15 +15,15 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return this.authService.isLoggedIn().pipe(map(isLoggedIn => {
-      const isLoginPage = state.url.includes('/login');
+      const isLoginPage = state.url.includes('/public/login');
 
       if (isLoggedIn && isLoginPage) {
         // Usuário está logado e tentando acessar a página de login, redireciona para o dashboard
-        this.router.navigate(['/dashboard/default']);
+        this.router.navigate(['/admin/dashboard']);
         return false;
       } else if (!isLoggedIn && !isLoginPage) {
         // Usuário não está logado e tentando acessar uma rota protegida, redireciona para login
-        this.router.navigate(['/login']);
+        this.router.navigate(['/public/login']);
         return false;
       }
 

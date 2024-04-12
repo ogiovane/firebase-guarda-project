@@ -29,7 +29,7 @@ export const NavigationItems: NavigationItem[] = [
         title: 'Início',
         type: 'item',
         classes: 'nav-item',
-        url: '/dashboard/default',
+        url: '/admin/dashboard',
         icon: 'ti ti-dashboard',
         breadcrumbs: false
       }
@@ -46,7 +46,7 @@ export const NavigationItems: NavigationItem[] = [
         title: 'Cautelar Material',
         type: 'item',
         classes: 'nav-item',
-        url: '/cautelar-material',
+        url: '/admin/cautelar-material',
         icon: 'ti ti-shopping-cart'
       },
       {
@@ -54,7 +54,7 @@ export const NavigationItems: NavigationItem[] = [
         title: 'Materiais Cautelados',
         type: 'item',
         classes: 'nav-item',
-        url: 'materiais-cautelados',
+        url: '/admin/materiais-cautelados',
         icon: 'ti ti-list'
       },
     ]
@@ -72,7 +72,7 @@ export const NavigationItems: NavigationItem[] = [
         title: 'Cadastrar Material',
         type: 'item',
         classes: 'nav-item',
-        url: '/cadastro-material',
+        url: '/admin/cadastro-material',
         icon: 'ti ti-circle-plus'
       },
       {
@@ -80,7 +80,7 @@ export const NavigationItems: NavigationItem[] = [
         title: 'Listar Materiais',
         type: 'item',
         classes: 'nav-item',
-        url: '/listar-materiais',
+        url: '/admin/listar-materiais',
         icon: 'ti ti-list'
       },
 
@@ -98,7 +98,7 @@ export const NavigationItems: NavigationItem[] = [
         title: 'Cadastrar Militar',
         type: 'item',
         classes: 'nav-item',
-        url: '/cadastro-militar',
+        url: '/admin/cadastro-militar',
         icon: 'ti ti-user-plus'
       },
 
@@ -107,7 +107,7 @@ export const NavigationItems: NavigationItem[] = [
         title: 'Listar Cadastros',
         type: 'item',
         classes: 'nav-item',
-        url: 'lista-cadastros',
+        url: '/admin/lista-cadastros',
         icon: 'ti ti-list',
         // target: true,
         // external: true
@@ -144,7 +144,7 @@ export const NavigationItems: NavigationItem[] = [
         id: 'sample-page',
         title: 'Emitir relatório',
         type: 'item',
-        url: '/relatorio',
+        url: '/admin/relatorio',
         classes: 'nav-item',
         icon: 'ti ti-report'
       },
@@ -152,7 +152,7 @@ export const NavigationItems: NavigationItem[] = [
         id: 'sample-page',
         title: 'Histórico Cautelas',
         type: 'item',
-        url: '/historico-cautelas',
+        url: '/admin/historico-cautelas',
         classes: 'nav-item',
         icon: 'ti ti-report'
       },

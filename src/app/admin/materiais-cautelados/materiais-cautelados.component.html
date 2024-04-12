@@ -7,7 +7,8 @@
       <th>Data/Hora Cautela</th>
       <th>Descrição</th>
       <th>Militar</th>
-      <th>Status</th>
+      <th>Tipo de Uso</th>
+      <th>Resp. Cautela</th>
       <th>Observação</th>
       <th>Ação</th>
     </tr>
@@ -17,7 +18,8 @@
       <td>{{ material.dataHoraCautela.toDate() | date: 'dd/MM/yyyy HH:mm' }}</td>
       <td>{{ material.tipo }} {{ material.descricaoMaterial }}</td>
       <td>{{ material.posto }} {{ material.nome }}</td>
-      <td>{{ material.status }}</td>
+      <td>{{ material.utilizacao }}</td>
+      <td>{{ material.responsavelCautela }}</td>
       <td>{{ material.observacao }}</td>
       <td>
         <button (click)="devolverMaterial(material)" class="btn btn-danger">Devolver</button>
@@ -89,4 +91,3 @@
   </table>
   </div>
 </div>
-

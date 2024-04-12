@@ -60,6 +60,6 @@ export class CadastroMilitaresComponent {
   }
 
   cancelar() {
-    this.router.navigate(['/dashboard/default']);
+    this.router.navigate(['/admin/dashboard']);
   }
 }

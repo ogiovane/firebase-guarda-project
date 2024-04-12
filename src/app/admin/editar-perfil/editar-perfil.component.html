@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2>Editar Perfil</h2>
+  <div *ngIf="(mensagemService.mensagemAtual | async) as mensagem" class="alert alert-info">
+    {{ mensagem }}
+  </div>
+  <form [formGroup]="perfilForm" (ngSubmit)="salvarPerfil()">
+    <!-- Dados do usuário -->
+    <div class="mb-3">
+      <label for="posto" class="form-label">Posto</label>
+      <input type="text" class="form-control" id="posto" formControlName="posto">
+    </div>
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="nome" formControlName="nome">
+    </div>
+    <div class="mb-3">
+      <label for="nomeGuerra" class="form-label">Nome de Guerra</label>
+      <input type="text" class="form-control" id="nomeGuerra" formControlName="nomeGuerra">
+    </div>
+    <div class="mb-3">
+      <label for="rg" class="form-label">RG</label>
+      <input type="text" class="form-control" id="rg" formControlName="rg">
+    </div>
+    <div class="mb-3">
+      <label for="nf" class="form-label">NF</label>
+      <input type="text" class="form-control" id="nf" formControlName="nf">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="email" formControlName="email" readonly>
+    </div>
+
+    <!-- Botões -->
+    <button type="submit" class="btn btn-primary" [disabled]="!perfilForm.valid">Salvar</button>
+  </form>
+</div>

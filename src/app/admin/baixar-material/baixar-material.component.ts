@@ -27,7 +27,7 @@ export class BaixarMaterialComponent implements OnInit {
       status: 'Baixado',
       motivoBaixa: this.motivo
     }).then(() => {
-      this.router.navigate(['/']); // Ajuste conforme necessário
+      this.router.navigate(['/admin/dashboard']); // Ajuste conforme necessário
     }).catch(error => {
       console.error("Erro ao baixar material:", error);
     });

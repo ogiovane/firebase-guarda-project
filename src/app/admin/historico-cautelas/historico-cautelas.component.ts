@@ -3,17 +3,8 @@ import { HistoricoService } from '../../services/historico.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FilterMaterialPipe } from '../../pipes/filter-material.pipe';
 import { FormsModule } from '@angular/forms';
-import { Cadastro } from '../../interfaces/cadastro';
+import { Historico } from '../../interfaces/historico';
 
-export interface Historico {
-  dataHoraCautela: Date;
-  tipo: string;
-  descricaoMaterial: string;
-  nome: string;
-  dataHoraDevolucao?: Date; // Tornar opcional, se necessário
-  responsavelDevolucao?: string;
-  responsavelCautela?: string;
-}
 
 @Component({
   selector: 'app-historico-cautelas',

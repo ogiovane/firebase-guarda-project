@@ -12,6 +12,7 @@ export class MensagemService {
 
   mudarMensagem(mensagem: string) {
     this.mensagemSource.next(mensagem);
+    setTimeout(() => this.limparMensagem(), 5000);  // Limpa a mensagem após 5 segundos
   }
 
   limparMensagem() {

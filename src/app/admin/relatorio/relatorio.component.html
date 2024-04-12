@@ -1,11 +1,6 @@
 <!-- src/app/relatorio/relatorio.component.html -->
 <div class="container mt-2">
   <form [formGroup]="form" (ngSubmit)="buscarHistorico()" class="row g-3">
-<!--    <div *ngIf="userData">-->
-<!--      <p>Nome: {{ userData.name }}</p>-->
-<!--      <p>Email: {{ userData.email }}</p>-->
-<!--      <img *ngIf="userData.picture" [src]="userData.picture" alt="Profile Picture">-->
-<!--    </div>-->
     <div class="col-md-6">
       <label for="dataInicio" class="form-label">Data/Hora Início:</label>
       <input type="datetime-local" id="dataInicio" formControlName="dataInicio" class="form-control">
@@ -15,8 +10,10 @@
       <input type="datetime-local" id="dataFim" formControlName="dataFim" class="form-control">
     </div>
     <div class="col-12 text-center">
-      <button type="submit" class="btn btn-primary">Buscar</button>
+      <button type="submit" class="btn btn-primary me-3">Buscar</button>
+      <button type="button" class="btn btn-success" (click)="exportarPDF()">Exportar PDF</button>
     </div>
+
   </form>
 
   <div class="table-responsive mt-4">
@@ -24,9 +21,8 @@
       <thead class="table-light">
       <tr>
         <th>Data Cautela</th>
+        <th>Descrição</th>
         <th>Militar</th>
-        <th>Tipo</th>
-        <th>Descrição Material</th>
         <th>Ab. Num.</th> <!-- Nova coluna para Cupom de Abastecimento -->
         <th>Data Devolução</th>
         <th>Responsável Devolução</th>
@@ -35,9 +31,8 @@
       <tbody>
       <tr *ngFor="let historico of historicos">
         <td>{{ historico.dataHoraCautela.toDate() | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>{{ historico.tipo }} {{ historico.descricaoMaterial }}</td>
         <td>{{ historico.posto }} {{ historico.nome }}</td>
-        <td>{{ historico.tipo }}</td>
-        <td>{{ historico.descricaoMaterial }}</td>
         <td>{{ historico.cupomAbastecimento || '-' }}</td>
         <td>{{ historico.dataHoraDevolucao.toDate() | date: 'dd/MM/yyyy HH:mm' }}</td>
         <td>{{ historico.responsavelDevolucao }}</td>

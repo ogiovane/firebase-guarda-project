@@ -6,7 +6,11 @@
     <a class="pc-head-link dropdown-toggle arrow-none me-0" ngbDropdownToggle>
       <img *ngIf="userData.picture" [src]="userData.picture" alt="user-image" class="user-avtar">
 <!--      <img src="assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar" />-->
-      <span>{{ userData.name }}</span>
+
+      <div *ngIf="userDetails$ | async as userDetails">
+        <span>{{ userDetails[0]?.posto }} {{ userDetails[0]?.nomeGuerra }}</span>
+        <!-- continue para outros campos -->
+      </div>
     </a>
     <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown" ngbDropdownMenu>
       <div class="dropdown-header">
@@ -25,12 +29,12 @@
       </div>
       <ul ngbNav #nav="ngbNav" class="nav drp-tabs nav-fill nav-tabs">
         <li ngbNavItem="1">
-          <a ngbNavLink><i class="ti ti-user"></i> Profile</a>
+          <a ngbNavLink><i class="ti ti-user"></i> Perfil</a>
           <ng-template ngbNavContent>
             <div>
-              <button class="dropdown-item" (click)="this.authService.logout()">
-                <i class="ti ti-power"></i>
-                <span>Logout</span>
+              <button class="dropdown-item" (click)="editarPerfil()">
+                <i class="ti ti-user"></i>
+                <span>Editar Perfil</span>
               </button>
             </div>
 <!--            @for (task of profile; track task) {-->
@@ -44,16 +48,14 @@
           </ng-template>
         </li>
         <li ngbNavItem="2">
-          <a ngbNavLink><i class="ti ti-settings"></i> Setting</a>
+          <a ngbNavLink><i class="ti ti-settings"></i> Configurações</a>
           <ng-template ngbNavContent>
-            @for (task of setting; track task) {
-              <div>
-                <a href="javascript:" class="dropdown-item">
-                  <i class="{{ task.icon }}"></i>
-                  <span>{{ task.title }}</span>
-                </a>
-              </div>
-            }
+            <div>
+              <button class="dropdown-item" (click)="this.authService.logout()">
+                <i class="ti ti-power"></i>
+                <span>Sair</span>
+              </button>
+            </div>
           </ng-template>
         </li>
       </ul>

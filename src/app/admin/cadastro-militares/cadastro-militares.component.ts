@@ -81,7 +81,7 @@ export class CadastroMilitaresComponent implements OnInit {
       this.db.collection('cadastros').doc(nf).set(this.cadastroForm.value)
         .then(() => {
           this.mensagemService.mudarMensagem('Cadastro salvo com sucesso!');
-          this.router.navigate(['/lista-cadastros']);
+          this.router.navigate(['/admin/lista-cadastros']);
         })
         .catch(error => {
           console.error('Erro ao salvar o cadastro:', error);
@@ -89,7 +89,7 @@ export class CadastroMilitaresComponent implements OnInit {
         });
     } else {
       this.mensagemService.mudarMensagem('Um cadastro com este NF já existe.');
-      this.router.navigate(['/lista-cadastros']);
+      this.router.navigate(['/admin/lista-cadastros']);
     }
   }
 
@@ -107,6 +107,6 @@ export class CadastroMilitaresComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate(['/dashboard/default']);
+    this.router.navigate(['/admin/dashboard']);
   }
 }

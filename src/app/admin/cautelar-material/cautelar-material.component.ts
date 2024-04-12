@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, of, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service.service';
-import { User } from 'firebase/auth';
 
 interface Material {
   id: string;
@@ -36,33 +35,24 @@ export class CautelarMaterialComponent implements OnInit {
   materiaisDisponiveis: Material[] = [];
   userData: any;
   militarNaoEncontrado: boolean = false;
+  currentUser: any;
+  isUserDataLoaded: boolean = false; // Adicione um controle de estado
 
 
   constructor(private firestore: AngularFirestore, private fb: FormBuilder, private route: ActivatedRoute,
               private router: Router, private authService: AuthService) {
-    this.emprestimoForm = new FormGroup({
-      nf: new FormControl('', Validators.required),
-      rg: new FormControl({ value: '', disabled: true }, Validators.required),
-      nome: new FormControl({ value: '', disabled: true }, Validators.required),
-      posto: new FormControl({ value: '', disabled: true }, Validators.required),
-      tipo: new FormControl('', Validators.required),
-      materialId: new FormControl('', Validators.required),
-      observacao: new FormControl(''),
-      descricaoMaterial: new FormControl('', Validators.required), // Campo adicionado para descrição
-      status: new FormControl('Cautelado')
+    this.emprestimoForm = this.fb.group({
+      nf: ['', Validators.required],
+      rg: ['', Validators.required], // Removido { value: '', disabled: true }
+      nome: ['', Validators.required],
+      posto: ['', Validators.required],
+      tipo: ['', Validators.required],
+      materialId: ['', Validators.required],
+      observacao: [''],
+      utilizacao: ['', Validators.required],
+      descricaoMaterial: ['', Validators.required],
+      status: ['Cautelado']
     });
-
-    // Se os dados do material forem passados, preencha o formulário com esses dados
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras.state) {
-      const material: Material = navigation.extras.state['material'];
-      this.emprestimoForm.patchValue({
-        tipo: material.tipo, // Ajuste conforme o nome do campo no seu formulário
-        descricaoMaterial: material.descricaoMaterial, // Ajuste conforme o nome do campo no seu formulário
-        materialId: material.id,
-        status: 'Cautelado' // Isso é apenas um exemplo, ajuste conforme necessário
-      });
-    }
   }
 
   ngOnInit(): void {
@@ -84,6 +74,14 @@ export class CautelarMaterialComponent implements OnInit {
     this.authService.getUserData().then(data => {
       this.userData = data;
     });
+
+    this.authService.getCurrentUserDetails().subscribe(user => {
+      if (user.length > 0) {
+        this.currentUser = user[0]; // Assumindo que o array tem os dados corretos
+        this.isUserDataLoaded = true;
+        // console.log("Dados do usuário carregados:", this.currentUser);
+      }
+    });
   }
 
 
@@ -102,19 +100,25 @@ export class CautelarMaterialComponent implements OnInit {
 
   validarMilitar(): void {
     const nf = this.emprestimoForm.get('nf')?.value;
-    this.firestore.collection<Militar>('cadastros', ref => ref.where('nf', '==', nf)).valueChanges({ idField: 'id' }).pipe(
-      map(militares => militares[0])
-    ).subscribe(militar => {
-      if (militar) {
-        this.emprestimoForm.patchValue({
-          rg: militar.rg,
-          nome: militar.nome,
-          posto: militar.posto
-        });
-        this.militarNaoEncontrado = false;
-      } else {
-        this.militarNaoEncontrado = true;      }
-    });
+    this.firestore.collection<Militar>('cadastros', ref => ref.where('nf', '==', nf)).valueChanges({ idField: 'id' })
+      .pipe(map(militares => militares[0]))
+      .subscribe(militar => {
+        if (militar) {
+          this.emprestimoForm.patchValue({
+            rg: militar.rg,
+            nome: militar.nome,
+            posto: militar.posto
+          });
+          this.militarNaoEncontrado = false;
+        } else {
+          this.emprestimoForm.patchValue({
+            rg: '',
+            nome: '',
+            posto: ''
+          });
+          this.militarNaoEncontrado = true;
+        }
+      });
   }
 
   filtrarSomenteNumeros(event: any): void {
@@ -144,17 +148,21 @@ export class CautelarMaterialComponent implements OnInit {
   }
 
   salvarEmprestimo(): void {
+    console.log("Formulário Válido?", this.emprestimoForm.valid);
+    console.log("Valores do Formulário:", this.emprestimoForm.value);
+
     if (this.emprestimoForm.valid) {
       const emprestimoData = this.emprestimoForm.getRawValue();
       // Ajuste a linha abaixo para incluir a data/hora atual antes de salvar
       emprestimoData.dataHoraCautela = new Date();
-      emprestimoData.responsavelCautela = this.userData.name;
+      emprestimoData.responsavelCautela = `${this.currentUser.posto} ${this.currentUser.nomeGuerra}`;
+      emprestimoData.emailResponsavelCautela = `${this.currentUser.email}`;
       emprestimoData.dataHoraDevolucao = '';
       emprestimoData.responsavelDevolucao = '';
 
 
-      this.firestore.collection('historico').add(emprestimoData).then(docRef => {
-        console.log('Emprestimo registrado com sucesso:', docRef.id);
+      this.firestore.collection('historico').add(emprestimoData).then(() => {
+        // console.log('Emprestimo registrado com sucesso:', docRef.id);
 
         // Atualizar status do material para 'Cautelado'
         this.atualizarStatusMaterial(emprestimoData.materialId, 'Cautelado').then(() => {
@@ -170,7 +178,7 @@ export class CautelarMaterialComponent implements OnInit {
             this.carregarMateriaisPorTipo();
           } else {
             // Se não deseja continuar, redirecionar para a lista de materiais
-            this.router.navigate(['/materiais-cautelados']);
+            this.router.navigate(['/admin/materiais-cautelados']);
           }
         });
       }).catch(error => {
@@ -185,25 +193,16 @@ export class CautelarMaterialComponent implements OnInit {
     return this.firestore.collection('materiais').doc(materialId).update({ status: novoStatus });
   }
 
-
-  // atualizarStatusMaterial(materialId: string, novoStatus: string): void {
-  //   this.firestore.collection('materiais').doc(materialId).update({ status: novoStatus })
-  //     .then(() => console.log('Status do material atualizado com sucesso.'))
-  //     .catch(error => console.error('Erro ao atualizar status do material:', error));
-  // }
-
   cancelarEmprestimo(): void {
-    this.router.navigate(['/dashboard/default']); // Usuário logado, redirecionar para dashboard
+    this.router.navigate(['/admin/dashboard']); // Usuário logado, redirecionar para dashboard
     // this.emprestimoForm.reset();
   }
 
   voltar(): void {
-    this.router.navigate(['/listar-materiais']);
+    this.router.navigate(['/admin/listar-materiais']);
   }
 
   navegarParaCadastroMilitar() {
-    this.router.navigate(['/cadastro-militar']);
+    this.router.navigate(['/admin/cadastro-militar']);
   }
-
-
 }
