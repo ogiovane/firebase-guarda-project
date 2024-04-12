@@ -4,65 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e353e79-9126-4ed4-837d-493bac2351e2" name="Changes" comment="Historico cautelas com busca OK">
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-perfil/editar-perfil.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-perfil/editar-perfil.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-perfil/editar-perfil.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/editar-perfil/editar-perfil.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/reset-password/reset-password.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/reset-password/reset-password.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/reset-password/reset-password.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/public/authentication/reset-password/reset-password.component.ts" afterDir="false" />
+    <list default="true" id="9e353e79-9126-4ed4-837d-493bac2351e2" name="Changes" comment="Login e recuperação de senha integrado e funcionando. Rotas adaptadas. Mensagens de erro na tela de login.">
+      <change afterPath="$PROJECT_DIR$/src/app/admin/guia-ajuda/guia-ajuda.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/admin/guia-ajuda/guia-ajuda.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/admin/guia-ajuda/guia-ajuda.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/admin/guia-ajuda/guia-ajuda.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/baixar-material/baixar-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/baixar-material/baixar-material.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/cadastro-material/cadastro-material.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/cadastro-militares/cadastro-militares.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/cadastro-militares/cadastro-militares.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/cautelar-materiais/cautelar-materiais.component.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/cautelar-material/cautelar-material.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/devolucao-material/devolucao-material.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/devolver-material/devolver-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/devolver-material/devolver-material.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/editar-cadastro/editar-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/editar-cadastro/editar-cadastro.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/editar-material/editar-material.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/historico-cautelas/historico-cautelas.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/historico-material/historico-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/historico-material/historico-material.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/lista-cadastros/lista-cadastros.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/lista-materiais/lista-materiais.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/materiais-cautelados/materiais-cautelados.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/receber-material/receber-material.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/relatorio/relatorio.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/relatorio-cautelas/relatorio-cautelas.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/relatorio-cautelas/relatorio-cautelas.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/demo/authentication/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/demo/authentication/register/register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/guest.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/guest.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/interfaces/historico.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/interfaces/historico.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/interfaces/material.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/interfaces/material.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pipes/format-rg.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pipes/format-rg.pipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/project/authentication/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/authentication/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/project/cadastro-militares/cadastro-militares.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/public/authentication/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/auth-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/auth-service.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/message.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/message.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-right/nav-right.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/relatorio.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/relatorio.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/nav-bar/nav-bar.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/theme/layouts/admin/navigation/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/theme/layouts/admin/navigation/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +141,7 @@
       <workItem from="1712588281638" duration="323000" />
       <workItem from="1712589112647" duration="3198000" />
       <workItem from="1712601345273" duration="4191000" />
-      <workItem from="1712865095331" duration="24214000" />
+      <workItem from="1712865095331" duration="37606000" />
     </task>
     <task id="LOCAL-00001" summary="Tela de login funcionando">
       <option name="closed" value="true" />
@@ -205,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712057331880</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Login e recuperação de senha integrado e funcionando. Rotas adaptadas. Mensagens de erro na tela de login.">
+      <option name="closed" value="true" />
+      <created>1712918194660</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712918194660</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +186,7 @@
     <MESSAGE value="Tela de login funcionando" />
     <MESSAGE value="Historico cautelas OK" />
     <MESSAGE value="Historico cautelas com busca OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Historico cautelas com busca OK" />
+    <MESSAGE value="Login e recuperação de senha integrado e funcionando. Rotas adaptadas. Mensagens de erro na tela de login." />
+    <option name="LAST_COMMIT_MESSAGE" value="Login e recuperação de senha integrado e funcionando. Rotas adaptadas. Mensagens de erro na tela de login." />
   </component>
 </project>

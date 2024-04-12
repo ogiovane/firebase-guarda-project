@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CommonModule } from '@angular/common';
 import { first } from 'rxjs';
 import { AuthService } from '../../services/auth-service.service';
+import { MensagemService } from '../../services/message.service';
 
 @Component({
   selector: 'app-devolver-material',
@@ -23,7 +24,8 @@ export class DevolverMaterialComponent implements OnInit {
     private fb: FormBuilder,
     private firestore: AngularFirestore,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private mensagemService: MensagemService
   ) {
     this.devolucaoForm = this.fb.group({
       necessitaAbastecimento: ['', Validators.required],
@@ -84,6 +86,8 @@ export class DevolverMaterialComponent implements OnInit {
     }).catch(error => {
       console.error("Erro ao atualizar documentos:", error);
     });
+
+    this.mensagemService.mudarMensagem('Devolução confirmada com sucesso!')
   }
 
   atualizarStatusMaterial(): void {
@@ -100,6 +104,7 @@ export class DevolverMaterialComponent implements OnInit {
 
 
   cancelar(): void {
+    this.mensagemService.mudarMensagem('Devolução cancelada.');
     this.router.navigate(['/admin/materiais-cautelados']);
   }
 }

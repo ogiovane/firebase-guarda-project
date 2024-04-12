@@ -1,6 +1,8 @@
-<!-- src/app/materiais-cautelados/materiais-cautelados.component.html -->
 <div class="container mt-2">
   <h3>Materiais Cautela Diária</h3>
+  <div *ngIf="mensagem" class="alert alert-warning">
+    {{ mensagem }}
+  </div>
   <table class="table table-striped table-hover">
     <thead>
     <tr>
@@ -53,6 +55,7 @@
       <td>{{ material.status }}</td>
       <td>{{ material.motivoBaixa }}{{ material.integranteP4 }}{{ material.observacao }}</td>
       <td>
+        <button (click)="editarMaterial(material)" class="btn btn-info me-2">Editar</button>
         <button (click)="receberMaterial(material)" class="btn btn-danger">Receber</button>
       </td>
     </tr>

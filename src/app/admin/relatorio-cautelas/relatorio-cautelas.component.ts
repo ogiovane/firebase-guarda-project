@@ -1,19 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RelatorioService } from '../../services/relatorio.service';
 import { AuthService } from '../../services/auth-service.service';
 import { DatePipe } from '@angular/common';
 import { CadastrosService } from '../../services/cadastros.service';
-
-interface Historico {
-  dataHoraCautela: Date;
-  nome: string;
-  tipo: string;
-  descricaoMaterial: string;
-  dataHoraDevolucao?: Date;
-  responsavelDevolucao?: string;
-}
 
 @Component({
   selector: 'app-relatorio-cautelas',

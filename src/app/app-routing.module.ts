@@ -86,13 +86,13 @@ const routes: Routes = [
         path: 'baixar-material/:id',
         loadComponent: () => import('./admin/baixar-material/baixar-material.component').then(m => m.BaixarMaterialComponent)
       },      {
-        path: 'color',
-        loadComponent: () => import('./demo/ui-component/ui-color/ui-color.component')
+        path: 'ajuda',
+        loadComponent: () => import('./admin/guia-ajuda/guia-ajuda.component').then(m => m.GuiaAjudaComponent)
       },
-      {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/other/sample-page/sample-page.component').then(m => m.SamplePageComponent)
-      }
+      // {
+      //   path: 'sample-page',
+      //   loadComponent: () => import('./demo/other/sample-page/sample-page.component').then(m => m.SamplePageComponent)
+      // }
     ]
   },
   {

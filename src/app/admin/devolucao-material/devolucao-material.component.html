@@ -1,37 +1,37 @@
-<div class="container mt-2">
-<form [formGroup]="devolucaoForm" class="needs-validation" novalidate>
-    <div class="mb-3">
-      <label for="tipoMaterial" class="form-label">Tipo de Material</label>
-      <input type="text" id="tipoMaterial" class="form-control" formControlName="tipoMaterial" readonly>
-    </div>
+<!--<div class="container mt-2">-->
+<!--<form [formGroup]="devolucaoForm" class="needs-validation" novalidate>-->
+<!--    <div class="mb-3">-->
+<!--      <label for="tipoMaterial" class="form-label">Tipo de Material</label>-->
+<!--      <input type="text" id="tipoMaterial" class="form-control" formControlName="tipoMaterial" readonly>-->
+<!--    </div>-->
 
-    <div class="mb-3">
-      <label for="descricaoMaterial" class="form-label">Descrição do Material</label>
-      <input type="text" id="descricaoMaterial" class="form-control" formControlName="descricaoMaterial" readonly>
-    </div>
+<!--    <div class="mb-3">-->
+<!--      <label for="descricaoMaterial" class="form-label">Descrição do Material</label>-->
+<!--      <input type="text" id="descricaoMaterial" class="form-control" formControlName="descricaoMaterial" readonly>-->
+<!--    </div>-->
 
-    <div>
-      <label>Abasteceu?</label>
-      <select formControlName="abasteceu">
-        <option value="">Selecione uma opção</option>
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
-      </select>
-    </div>
+<!--    <div>-->
+<!--      <label>Abasteceu?</label>-->
+<!--      <select formControlName="abasteceu">-->
+<!--        <option value="">Selecione uma opção</option>-->
+<!--        <option value="Sim">Sim</option>-->
+<!--        <option value="Não">Não</option>-->
+<!--      </select>-->
+<!--    </div>-->
 
-    <!-- Campo condicional baseado na escolha 'Sim' para 'Abasteceu?' -->
-    <div *ngIf="devolucaoForm.get('abasteceu').value === 'Sim'">
-      <label>Cupom de Abastecimento:</label>
-      <input type="text" formControlName="cupomAbastecimento">
-    </div>
+<!--    &lt;!&ndash; Campo condicional baseado na escolha 'Sim' para 'Abasteceu?' &ndash;&gt;-->
+<!--    <div *ngIf="devolucaoForm.get('abasteceu').value === 'Sim'">-->
+<!--      <label>Cupom de Abastecimento:</label>-->
+<!--      <input type="text" formControlName="cupomAbastecimento">-->
+<!--    </div>-->
 
-    <button (click)="salvarDevolucao()" style="background-color: green;">Confirmar</button>
-    <button (click)="cancelar()" style="background-color: gray;">Cancelar</button>
+<!--    <button (click)="salvarDevolucao()" style="background-color: green;">Confirmar</button>-->
+<!--    <button (click)="cancelar()" style="background-color: gray;">Cancelar</button>-->
 
-    <!-- Ajustando o evento (click) no botão "Confirmar" -->
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-      <button type="button" class="btn btn-success me-2" (click)="salvarDevolucao()">Confirmar</button>
-      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
-    </div>
-  </form>
-</div>
+<!--    &lt;!&ndash; Ajustando o evento (click) no botão "Confirmar" &ndash;&gt;-->
+<!--    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">-->
+<!--      <button type="button" class="btn btn-success me-2" (click)="salvarDevolucao()">Confirmar</button>-->
+<!--      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->

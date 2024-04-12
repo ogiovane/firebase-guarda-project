@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service.service';
+import { FormatRgPipe } from '../../pipes/format-rg.pipe';
 
 interface Material {
   id: string;
@@ -27,7 +28,7 @@ interface Militar {
   templateUrl: './cautelar-material.component.html',
   styleUrls: ['./cautelar-material.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, CommonModule]
+  imports: [ReactiveFormsModule, AsyncPipe, CommonModule, FormatRgPipe]
 })
 export class CautelarMaterialComponent implements OnInit {
   emprestimoForm: FormGroup;
@@ -148,8 +149,8 @@ export class CautelarMaterialComponent implements OnInit {
   }
 
   salvarEmprestimo(): void {
-    console.log("Formulário Válido?", this.emprestimoForm.valid);
-    console.log("Valores do Formulário:", this.emprestimoForm.value);
+    console.log('Formulário Válido?', this.emprestimoForm.valid);
+    console.log('Valores do Formulário:', this.emprestimoForm.value);
 
     if (this.emprestimoForm.valid) {
       const emprestimoData = this.emprestimoForm.getRawValue();

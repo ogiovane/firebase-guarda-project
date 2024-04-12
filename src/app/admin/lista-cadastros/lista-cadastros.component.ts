@@ -6,11 +6,12 @@ import { Cadastro } from '../../interfaces/cadastro';
 import { CommonModule } from '@angular/common';
 import { FilterMilitarPipe } from '../../pipes/filter-militar.pipe';
 import { MensagemService } from '../../services/message.service';
+import { FormatRgPipe } from '../../pipes/format-rg.pipe';
 
 @Component({
   selector: 'app-lista-cadastros',
   standalone: true,
-  imports: [FormsModule, CommonModule, FilterMilitarPipe],
+  imports: [FormsModule, CommonModule, FilterMilitarPipe, FormatRgPipe],
   templateUrl: './lista-cadastros.component.html',
   styleUrls: ['./lista-cadastros.component.scss']
 })

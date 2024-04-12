@@ -49,14 +49,14 @@ export const NavigationItems: NavigationItem[] = [
         url: '/admin/cautelar-material',
         icon: 'ti ti-shopping-cart'
       },
-      {
-        id: 'color',
-        title: 'Materiais Cautelados',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/admin/materiais-cautelados',
-        icon: 'ti ti-list'
-      },
+      // {
+      //   id: 'color',
+      //   title: 'Materiais Cautelados',
+      //   type: 'item',
+      //   classes: 'nav-item',
+      //   url: '/admin/materiais-cautelados',
+      //   icon: 'ti ti-list'
+      // },
     ]
   },
   {
@@ -154,7 +154,23 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         url: '/admin/historico-cautelas',
         classes: 'nav-item',
-        icon: 'ti ti-report'
+        icon: 'ti ti-list'
+      },
+    ]
+  },
+  {
+    id: 'help',
+    title: 'Ajuda',
+    type: 'group',
+    // icon: 'help',
+    children: [
+      {
+        id: 'sample-page',
+        title: 'Guia de Uso',
+        type: 'item',
+        url: '/admin/ajuda',
+        classes: 'nav-item',
+        icon: 'ti ti-help'
       },
     ]
   }
